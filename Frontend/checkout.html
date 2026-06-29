@@ -1,0 +1,1038 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout — Fresh Auraa</title>
+    <meta name="description" content="Securely complete your purchase at Fresh Auraa. Premium sustainable home care products." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --hero-bg: #1a1c17;
+        --footer-bg: #0f1109;
+        --page-bg: #f2f2f0;
+        --page-card: #ffffff;
+        --page-lift: #f7f7f6;
+        --text-dark: #1e211a;
+        --text-mid: #3a3d36;
+        --text-soft: #6b6e65;
+        --accent: #b8892f;
+        --accent-dk: #8a6520;
+        --accent-lt: #d4a84b;
+        --btn-bg: #d1bfae;
+        --btn-text: #21241d;
+        --text-gold: #e5d9c5;
+        --text-white: #ffffff;
+        --border: rgba(180, 160, 110, 0.25);
+        --border-lt: rgba(180, 160, 110, 0.12);
+        --border-dark: rgba(229, 217, 197, 0.15);
+        --font-serif: "Cinzel", serif;
+        --font-sans: "Montserrat", sans-serif;
+        --radius: 4px;
+        --radius-lg: 10px;
+        --trans: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: var(--font-sans);
+        background-color: var(--page-bg);
+        color: var(--text-dark);
+        overflow-x: hidden;
+        min-height: 100vh;
+      }
+      a { text-decoration: none; color: inherit; }
+      img { display: block; max-width: 100%; }
+      ::-webkit-scrollbar { width: 5px; }
+      ::-webkit-scrollbar-track { background: var(--page-bg); }
+      ::-webkit-scrollbar-thumb { background: #c9a96e; border-radius: 3px; }
+
+      /* ── NAV ─────────────────────────── */
+      .site-nav {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 200;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.4rem 5rem;
+        background: rgba(26, 28, 23, 0.97);
+        border-bottom: 1px solid var(--border-dark);
+        backdrop-filter: blur(14px);
+      }
+      .logo { display: flex; align-items: center; }
+      .nav-logo { height: 90px; width: auto; object-fit: contain; }
+      nav ul { display: flex; list-style: none; gap: 3.5rem; }
+      nav ul li a {
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--text-white);
+        position: relative;
+        padding-bottom: 5px;
+        transition: color var(--trans);
+      }
+      nav ul li a::after {
+        content: "";
+        position: absolute;
+        bottom: 0; left: 0;
+        width: 0; height: 1.5px;
+        background: var(--accent-lt);
+        transition: width 0.3s ease;
+      }
+      nav ul li a:hover::after { width: 100%; }
+
+      .cart-nav-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px; height: 44px;
+        border-radius: 50%;
+        border: 1.5px solid var(--accent);
+        color: var(--accent-lt);
+        background: rgba(184,137,47,0.12);
+        margin-left: 2rem;
+        position: relative;
+        transition: all var(--trans);
+        flex-shrink: 0;
+      }
+      .cart-nav-link:hover {
+        background: rgba(184,137,47,0.22);
+        transform: scale(1.08);
+      }
+      .cart-badge {
+        position: absolute;
+        top: -6px; right: -6px;
+        background: var(--accent);
+        color: #fff;
+        font-size: 0.55rem;
+        font-weight: 700;
+        width: 18px; height: 18px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transform: scale(0.6);
+        transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+        pointer-events: none;
+      }
+      .cart-badge.has-items { opacity: 1; transform: scale(1); }
+
+      /* ── HERO BANNER ─────────────────── */
+      .cart-hero {
+        width: 100%;
+        padding-top: 160px;
+        padding-bottom: 60px;
+        background: linear-gradient(135deg, #f5f0e8 0%, #ede5d5 50%, #f0ebe0 100%);
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(184,137,47,0.15);
+      }
+      .cart-hero::before {
+        content: "";
+        position: absolute;
+        top: -60px; right: -60px;
+        width: 480px; height: 480px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(184,137,47,0.12) 0%, transparent 70%);
+        pointer-events: none;
+      }
+      .cart-hero::after {
+        content: "";
+        position: absolute;
+        bottom: 0; left: 50%;
+        width: 100%; height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(184,137,47,0.3), transparent);
+        transform: translateX(-50%);
+      }
+      .cart-hero-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 5rem;
+        position: relative;
+        z-index: 2;
+      }
+      .breadcrumb {
+        font-size: 0.65rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(120,100,60,0.5);
+        margin-bottom: 22px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .breadcrumb a { color: rgba(120,100,60,0.5); transition: color var(--trans); }
+      .breadcrumb a:hover { color: var(--accent); }
+      .breadcrumb .sep { color: rgba(120,100,60,0.25); }
+      .cart-hero-title {
+        font-family: var(--font-serif);
+        font-size: 3.2rem;
+        font-weight: 400;
+        color: var(--text-dark);
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        margin-bottom: 10px;
+        animation: fadeUp 0.7s ease forwards;
+      }
+      .cart-hero-sub {
+        font-size: 0.72rem;
+        letter-spacing: 2.5px;
+        color: var(--accent);
+        text-transform: uppercase;
+        animation: fadeUp 0.7s ease 0.1s both;
+      }
+      .gold-accent-line {
+        width: 56px; height: 2px;
+        background: linear-gradient(90deg, var(--accent), transparent);
+        margin-top: 20px;
+        animation: fadeUp 0.7s ease 0.2s both;
+      }
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(22px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      /* ── LAYOUT ──────────────────────── */
+      .checkout-main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 56px 5rem 100px;
+        display: grid;
+        grid-template-columns: 1fr 420px;
+        gap: 40px;
+        align-items: start;
+      }
+
+      .sec-label {
+        font-size: 0.65rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--accent);
+        font-weight: 600;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .sec-label::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+
+      /* ── CHECKOUT FORM ──────────────── */
+      .checkout-card {
+        background: var(--page-card);
+        border: 1px solid #e4e1d8;
+        border-radius: var(--radius-lg);
+        padding: 36px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.02);
+      }
+      
+      .form-section {
+        margin-bottom: 32px;
+      }
+      .form-section-title {
+        font-family: var(--font-serif);
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--text-dark);
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .form-section-title svg {
+        color: var(--accent);
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+      .full-width {
+        grid-column: 1 / -1;
+      }
+
+      .input-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .input-wrap label {
+        font-size: 0.65rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--text-soft);
+        font-weight: 600;
+      }
+      .form-input {
+        width: 100%;
+        padding: 14px 16px;
+        background: #f7f4ef;
+        border: 1px solid rgba(184, 137, 47, 0.2);
+        border-radius: var(--radius);
+        color: var(--text-dark);
+        font-family: var(--font-sans);
+        font-size: 0.82rem;
+        outline: none;
+        transition: border-color var(--trans), box-shadow var(--trans);
+      }
+      .form-input:focus {
+        border-color: var(--accent);
+        background: #ffffff;
+        box-shadow: 0 0 0 3px rgba(184, 137, 47, 0.1);
+      }
+      .form-input::placeholder {
+        color: var(--text-soft);
+        opacity: 0.5;
+      }
+
+      /* Payment Options */
+      .payment-methods {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 10px;
+      }
+      .payment-option {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 20px;
+        border: 1px solid rgba(184, 137, 47, 0.15);
+        border-radius: var(--radius);
+        cursor: pointer;
+        background: #fdfdfd;
+        transition: all var(--trans);
+      }
+      .payment-option:hover {
+        border-color: var(--accent);
+        background: #fdf8f0;
+      }
+      .payment-option.active {
+        border-color: var(--accent);
+        background: #fdf8f0;
+        box-shadow: 0 4px 12px rgba(184, 137, 47, 0.06);
+      }
+      .payment-option input[type="radio"] {
+        accent-color: var(--accent);
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+      }
+      .payment-details-text {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .payment-title {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text-dark);
+      }
+      .payment-desc {
+        font-size: 0.72rem;
+        color: var(--text-soft);
+      }
+
+      /* ── ORDER SUMMARY COLUMN ────────── */
+      .order-summary-card {
+        background: #ffffff;
+        border-radius: var(--radius-lg);
+        border: 1px solid rgba(184, 137, 47, 0.2);
+        box-shadow: 0 8px 40px rgba(184, 137, 47, 0.1);
+        overflow: hidden;
+      }
+      .summary-head {
+        padding: 24px 30px;
+        border-bottom: 1px solid rgba(184, 137, 47, 0.12);
+        background: linear-gradient(135deg, #fdf8f0 0%, #f9f3e6 100%);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .summary-title {
+        font-family: var(--font-serif);
+        font-size: 1.1rem;
+        font-weight: 500;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--text-dark);
+      }
+      .summary-items-list {
+        padding: 24px 30px 14px;
+        max-height: 320px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .checkout-item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .checkout-item-img {
+        width: 52px; height: 52px;
+        border-radius: var(--radius);
+        overflow: hidden;
+        border: 1px solid #e4e1d8;
+        background: var(--page-lift);
+        display: flex; align-items: center; justify-content: center;
+        flex-shrink: 0;
+      }
+      .checkout-item-img img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+      }
+      .checkout-item-details {
+        flex: 1;
+        min-width: 0;
+      }
+      .checkout-item-name {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .checkout-item-qty {
+        font-size: 0.68rem;
+        color: var(--text-soft);
+        margin-top: 2px;
+      }
+      .checkout-item-price {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--text-dark);
+        flex-shrink: 0;
+      }
+
+      .summary-bill-details {
+        padding: 20px 30px 30px;
+        border-top: 1px solid rgba(184, 137, 47, 0.12);
+        background: #fafaf9;
+      }
+      .bill-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+      .bill-label {
+        font-size: 0.72rem;
+        letter-spacing: 1px;
+        color: var(--text-soft);
+        text-transform: uppercase;
+      }
+      .bill-val {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text-dark);
+      }
+      .bill-val.free {
+        color: #27ae60;
+        font-size: 0.72rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+      
+      .bill-divider {
+        height: 1px;
+        background: rgba(184, 137, 47, 0.12);
+        margin: 16px 0;
+      }
+
+      .grand-total-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-top: 8px;
+        margin-bottom: 24px;
+      }
+      .grand-total-label {
+        font-size: 0.65rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--text-soft);
+        font-weight: 600;
+      }
+      .grand-total-price {
+        font-family: var(--font-serif);
+        font-size: 1.8rem;
+        color: var(--accent);
+        font-weight: 500;
+      }
+
+      .place-order-btn {
+        width: 100%;
+        padding: 18px;
+        font-family: var(--font-sans);
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        background: linear-gradient(135deg, var(--accent-lt) 0%, var(--accent) 60%, var(--accent-dk) 100%);
+        color: #fff;
+        border: none;
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: all var(--trans);
+        box-shadow: 0 8px 24px rgba(184, 137, 47, 0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+      }
+      .place-order-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 40px rgba(184,137,47,0.4);
+      }
+      .place-order-btn:active {
+        transform: translateY(0);
+      }
+
+      /* ── MODAL SUCCESS ──────────────── */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.72);
+        backdrop-filter: blur(7px);
+        z-index: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease;
+      }
+      .modal-overlay.active { opacity: 1; pointer-events: all; }
+      .modal-box {
+        background: var(--page-card);
+        border-radius: var(--radius-lg);
+        padding: 52px 48px;
+        max-width: 480px;
+        width: 90%;
+        text-align: center;
+        transform: translateY(24px) scale(0.96);
+        transition: all 0.45s cubic-bezier(0.34,1.56,0.64,1);
+        border: 1px solid #e4e1d8;
+        box-shadow: 0 40px 100px rgba(0,0,0,0.2);
+      }
+      .modal-overlay.active .modal-box { transform: translateY(0) scale(1); }
+      .modal-tick {
+        width: 76px; height: 76px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, rgba(184,137,47,0.1), rgba(184,137,47,0.05));
+        border: 1.5px solid rgba(184,137,47,0.22);
+        display: flex; align-items: center; justify-content: center;
+        margin: 0 auto 28px;
+      }
+      .modal-box h2 {
+        font-family: var(--font-serif);
+        font-size: 1.8rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: var(--text-dark);
+        margin-bottom: 14px;
+      }
+      .modal-box p {
+        font-size: 0.82rem;
+        color: var(--text-soft);
+        line-height: 1.8;
+        max-width: 340px;
+        margin: 0 auto 26px;
+      }
+      .modal-order-id {
+        font-family: var(--font-serif);
+        font-size: 0.72rem;
+        letter-spacing: 3px;
+        color: var(--accent);
+        margin-bottom: 34px;
+        padding: 11px 22px;
+        background: rgba(184,137,47,0.06);
+        border: 1px solid rgba(184,137,47,0.14);
+        border-radius: var(--radius);
+        display: inline-block;
+      }
+      .modal-close {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 15px 32px;
+        background: var(--text-dark);
+        color: #fff;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        border: none;
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: all var(--trans);
+      }
+      .modal-close:hover { background: var(--accent-dk); transform: translateY(-2px); }
+
+      /* ── FOOTER ──────────────────────── */
+      .site-footer {
+        background: var(--footer-bg);
+        border-top: 1px solid rgba(229,217,197,0.07);
+        padding: 32px 5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: auto;
+      }
+      .footer-copy { font-size: 0.62rem; letter-spacing: 1.5px; color: rgba(229,217,197,0.22); text-transform: uppercase; }
+      .footer-links { display: flex; gap: 28px; }
+      .footer-links a { font-size: 0.62rem; letter-spacing: 1.5px; color: rgba(229,217,197,0.28); text-transform: uppercase; transition: color var(--trans); }
+      .footer-links a:hover { color: var(--accent-lt); }
+
+      /* ── TOAST ───────────────────────── */
+      .toast {
+        position: fixed;
+        bottom: 36px;
+        left: 50%;
+        transform: translateX(-50%) translateY(24px);
+        background: #1e211a;
+        border: 1px solid rgba(184,137,47,0.35);
+        color: var(--text-gold);
+        padding: 15px 28px;
+        border-radius: var(--radius-lg);
+        font-size: 0.76rem;
+        letter-spacing: 1.5px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        z-index: 9999;
+        opacity: 0;
+        transition: all 0.4s ease;
+        pointer-events: none;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        white-space: nowrap;
+      }
+      .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+      /* ── RESPONSIVE ──────────────────── */
+      @media (max-width: 980px) {
+        .checkout-main { grid-template-columns: 1fr; padding: 40px 2rem 60px; }
+        .site-nav { padding: 1.2rem 2rem; }
+        .cart-hero-inner { padding: 0 2rem; }
+        .cart-hero-title { font-size: 2.4rem; }
+      }
+      @media (max-width: 640px) {
+        .cart-hero { padding-top: 120px; }
+        nav ul { gap: 1.5rem; }
+        .site-footer { flex-direction: column; align-items: flex-start; padding: 24px 2rem; }
+        .form-grid { grid-template-columns: 1fr; }
+        .checkout-card { padding: 24px; }
+      }
+          @media (max-width: 768px) {
+        .nav-logo { height: 65px !important; margin-top: 0 !important; }
+      }
+      a, .nav-logo a, nav ul li a { text-decoration: none !important; }
+</style>
+  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <!-- NAVBAR -->
+    <nav class="site-nav">
+      <div class="logo">
+        <a href="c.html">
+          <img src="assets/logo5.png" alt="Fresh Auraa" class="nav-logo"
+               onerror="this.onerror=null;this.src='assets/logo5.png';" />
+        </a>
+      </div>
+      <ul class="d-none d-lg-flex align-items-center m-0">
+        <li><a href="c.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="d-flex align-items-center">
+<a class="cart-nav-link" href="cart.html" aria-label="Cart">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </a>
+          <!-- Mobile Hamburger Button -->
+      <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNav" aria-controls="mobileNav" style="background: none; border: none; color: white; font-size: 1.5rem; margin-left: 15px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="mobileNav" aria-labelledby="mobileNavLabel" style="width: 250px;">
+      <div class="offcanvas-header border-bottom border-secondary">
+        <h5 class="offcanvas-title" style="font-family: var(--font-serif); letter-spacing: 2px;" id="mobileNavLabel">MENU</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" style="gap: 1rem; list-style: none; padding: 0;">
+          <li><a href="c.html" class="text-white text-decoration-none d-block py-2" style="font-size: 0.9rem; letter-spacing: 2px;">HOME</a></li>
+          <li><a href="products.html" class="text-white text-decoration-none d-block py-2" style="font-size: 0.9rem; letter-spacing: 2px;">PRODUCTS</a></li>
+          <li><a href="about.html" class="text-white text-decoration-none d-block py-2" style="font-size: 0.9rem; letter-spacing: 2px;">ABOUT</a></li>
+          <li><a href="blog.html" class="text-white text-decoration-none d-block py-2" style="font-size: 0.9rem; letter-spacing: 2px;">BLOG</a></li>
+          <li><a href="contact.html" class="text-white text-decoration-none d-block py-2" style="font-size: 0.9rem; letter-spacing: 2px;">CONTACT</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- HERO BANNER -->
+    <div class="cart-hero">
+      <div class="cart-hero-inner">
+        <h1 class="cart-hero-title">Checkout</h1>
+        <p class="cart-hero-sub" id="heroSub">Complete Your Order</p>
+        <div class="gold-accent-line"></div>
+      </div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="checkout-main">
+      
+      <!-- LEFT - Checkout form -->
+      <div>
+        <div class="sec-label">Shipping & Billing</div>
+        
+        <form class="checkout-card" id="checkoutForm" onsubmit="handlePlaceOrder(event)">
+          <!-- Personal Info -->
+          <div class="form-section">
+            <h2 class="form-section-title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              Contact Information
+            </h2>
+            <div class="form-grid">
+              <div class="input-wrap">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" class="form-input" placeholder="e.g. Rahul" required />
+              </div>
+              <div class="input-wrap">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" class="form-input" placeholder="e.g. Sharma" required />
+              </div>
+              <div class="input-wrap">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" class="form-input" placeholder="e.g. rahul@example.com" required />
+              </div>
+              <div class="input-wrap">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" class="form-input" placeholder="e.g. 9876543210" required />
+              </div>
+            </div>
+          </div>
+
+          <!-- Shipping Details -->
+          <div class="form-section">
+            <h2 class="form-section-title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              Shipping Address
+            </h2>
+            <div class="form-grid">
+              <div class="input-wrap full-width">
+                <label for="address">Street Address *</label>
+                <input type="text" id="address" class="form-input" placeholder="House No., Building Name, Street Name" required />
+              </div>
+              <div class="input-wrap full-width">
+                <label for="landmark">Landmark (Optional)</label>
+                <input type="text" id="landmark" class="form-input" placeholder="e.g. Near Central Park" />
+              </div>
+              <div class="input-wrap">
+                <label for="city">City *</label>
+                <input type="text" id="city" class="form-input" placeholder="e.g. Mumbai" required />
+              </div>
+              <div class="input-wrap">
+                <label for="state">State *</label>
+                <input type="text" id="state" class="form-input" placeholder="e.g. Maharashtra" required />
+              </div>
+              <div class="input-wrap">
+                <label for="pincode">Pincode *</label>
+                <input type="text" id="pincode" class="form-input" pattern="[0-9]{6}" placeholder="e.g. 400001" required />
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment Options -->
+          <div class="form-section" style="margin-bottom: 0;">
+            <h2 class="form-section-title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              Payment Method
+            </h2>
+            <div class="payment-methods">
+              <label class="payment-option active" onclick="selectPayment(this)">
+                <input type="radio" name="payment" value="cod" checked />
+                <div class="payment-details-text">
+                  <span class="payment-title">Cash on Delivery (COD)</span>
+                  <span class="payment-desc">Pay cash when products are delivered to your doorstep.</span>
+                </div>
+              </label>
+              <label class="payment-option" onclick="selectPayment(this)">
+                <input type="radio" name="payment" value="online" />
+                <div class="payment-details-text">
+                  <span class="payment-title">UPI / Cards / Net Banking</span>
+                  <span class="payment-desc">Pay securely online (UPI, GooglePay, Paytm, Cards).</span>
+                </div>
+              </label>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- RIGHT - Summary -->
+      <div>
+        <div class="sec-label">Your Order</div>
+        
+        <div class="order-summary-card">
+          <div class="summary-head">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                 fill="none" stroke="#b8892f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+            <div class="summary-title">Order Items</div>
+          </div>
+
+          <!-- Items list -->
+          <div class="summary-items-list" id="checkoutItemsList">
+            <!-- Dynamically rendered -->
+          </div>
+
+          <!-- Pricing summary -->
+          <div class="summary-bill-details">
+            <div class="bill-row">
+              <span class="bill-label">Subtotal</span>
+              <span class="bill-val" id="checkoutSubtotal">₹0</span>
+            </div>
+            <div class="bill-row">
+              <span class="bill-label">Shipping</span>
+              <span class="bill-val free">Free</span>
+            </div>
+            
+            <div class="bill-divider"></div>
+            
+            <div class="grand-total-row">
+              <span class="grand-total-label">Grand Total</span>
+              <span class="grand-total-price" id="checkoutTotal">₹0</span>
+            </div>
+
+            <button type="submit" form="checkoutForm" class="place-order-btn">
+              <span>Place Order</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-copy">© 2025 Fresh Auraa · Clean Home. Kind Planet.</div>
+      <div class="footer-links">
+        <a href="c.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </footer>
+
+    <!-- SUCCESS MODAL -->
+    <div class="modal-overlay" id="successModal">
+      <div class="modal-box">
+        <div class="modal-tick">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#b8892f" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+        <h2>Order Confirmed!</h2>
+        <p>Thank you for choosing Fresh Auraa. Your checkout details have been saved, and our team will contact you shortly to confirm your order details and delivery.</p>
+        <div class="modal-order-id" id="successOrderId">ORDER #FA-00000</div>
+        <button class="modal-close" onclick="closeSuccessModal()">
+          Back to Home
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#b8892f" stroke-width="2.5"
+           stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+      <span id="toastText">Done!</span>
+    </div>
+
+    <script>
+      let cartItems = JSON.parse(localStorage.getItem('freshAuraCart') || '[]');
+
+      // Redirect if cart is empty
+      if (!cartItems.length) {
+        window.location.href = 'products.html';
+      }
+
+      function refreshBadge() {
+        const n = cartItems.reduce((s, i) => s + i.qty, 0);
+        const b = document.getElementById('cartBadge');
+        if (b) {
+          b.textContent = n > 99 ? '99+' : n;
+          b.classList.toggle('has-items', n > 0);
+        }
+      }
+
+      function renderOrderSummary() {
+        const listContainer = document.getElementById('checkoutItemsList');
+        const subtotalEl = document.getElementById('checkoutSubtotal');
+        const totalEl = document.getElementById('checkoutTotal');
+
+        let subtotal = 0;
+
+        listContainer.innerHTML = cartItems.map(item => {
+          subtotal += item.price * item.qty;
+          return `
+            <div class="checkout-item">
+              <div class="checkout-item-img">
+                ${item.image 
+                  ? `<img src="${item.image}" alt="${item.name}" onerror="this.parentElement.innerHTML='🛍'">` 
+                  : '🛍'}
+              </div>
+              <div class="checkout-item-details">
+                <div class="checkout-item-name">${item.name}</div>
+                <div class="checkout-item-qty">Qty: ${item.qty}</div>
+              </div>
+              <div class="checkout-item-price">₹${(item.price * item.qty).toLocaleString('en-IN')}</div>
+            </div>
+          `;
+        }).join('');
+
+        subtotalEl.textContent = '₹' + subtotal.toLocaleString('en-IN');
+        totalEl.textContent = '₹' + subtotal.toLocaleString('en-IN');
+      }
+
+      function selectPayment(element) {
+        document.querySelectorAll('.payment-option').forEach(opt => {
+          opt.classList.remove('active');
+          opt.querySelector('input[type="radio"]').checked = false;
+        });
+        element.classList.add('active');
+        element.querySelector('input[type="radio"]').checked = true;
+      }
+
+      function handlePlaceOrder(event) {
+        event.preventDefault();
+
+        const firstName = document.getElementById('firstName').value.trim();
+        const lastName = document.getElementById('lastName').value.trim();
+        const fullName = `${firstName} ${lastName}`;
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const streetAddress = document.getElementById('address').value.trim();
+        const landmark = document.getElementById('landmark').value.trim();
+        const city = document.getElementById('city').value.trim();
+        const state = document.getElementById('state').value.trim();
+        const pincode = document.getElementById('pincode').value.trim();
+        const paymentVal = document.querySelector('input[name="payment"]:checked').value;
+        const paymentMethod = paymentVal === 'cod' ? 'Cash on Delivery' : 'Online Payment';
+
+        const products = cartItems.map(item => ({
+          name: item.name,
+          price: item.price,
+          quantity: item.qty
+        }));
+
+        const totalAmount = cartItems.reduce((s, i) => s + i.price * i.qty, 0);
+
+        const orderData = {
+          fullName,
+          email,
+          phone,
+          streetAddress: landmark ? `${streetAddress} (Landmark: ${landmark})` : streetAddress,
+          city,
+          state,
+          pincode,
+          paymentMethod,
+          products,
+          totalAmount
+        };
+
+        const btn = document.querySelector('.place-order-btn');
+        const btnText = btn.querySelector('span');
+        const originalText = btnText.textContent;
+
+        btnText.textContent = 'Placing Order...';
+        btn.disabled = true;
+
+        fetch('http://localhost:3000/api/orders', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(orderData)
+        })
+        .then(res => res.json())
+        .then(data => {
+          btnText.textContent = originalText;
+          btn.disabled = false;
+          if (data.success) {
+            const displayId = data.order && data.order._id ? data.order._id.slice(-6).toUpperCase() : 'FA-' + Math.floor(10000 + Math.random() * 90000);
+            document.getElementById('successOrderId').textContent = 'ORDER #' + displayId;
+            document.getElementById('successModal').classList.add('active');
+          } else {
+            alert('Error: ' + (data.message || 'Could not place order'));
+          }
+        })
+        .catch(err => {
+          btnText.textContent = originalText;
+          btn.disabled = false;
+          console.error(err);
+          alert('Could not connect to server. Please try again.');
+        });
+      }
+
+      function closeSuccessModal() {
+        localStorage.removeItem('freshAuraCart');
+        document.getElementById('successModal').classList.remove('active');
+        window.location.href = 'c.html';
+      }
+
+      // Init
+      refreshBadge();
+      renderOrderSummary();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+      <!-- WhatsApp Floating Icon -->
+    <a href="https://wa.me/" target="_blank" style="position: fixed; bottom: 30px; right: 30px; z-index: 9999; font-size: 45px; text-decoration: none; line-height: 1; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+      <i class="fa-brands fa-square-whatsapp fa-beat fa-sm fa-width-auto" style="color: #24cc63;"></i>
+    </a>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,1170 @@
+              </div>
+              <div class="panel-body" style="padding: 20px;">
+                <div class="field" style="margin-bottom: 20px;">
+                  <label for="aboutContentInput">About Content (Paragraphs)</label>
+                  <textarea id="aboutContentInput" rows="10" placeholder="Enter content for the about page..."></textarea>
+                  <div class="field-hint">Use double line breaks to separate paragraphs.</div>
+                </div>
+                <div class="field" style="margin-bottom: 20px;">
+                  <label for="aboutVideoInput">Video URL (e.g. assets/freshauraa__.mp4)</label>
+                  <input id="aboutVideoInput" type="text" placeholder="assets/freshauraa__.mp4" />
+                </div>
+                <button class="btn btn-gold" onclick="saveAbout()">Save Changes</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+
+    <!-- ══════ MODAL: ADD/EDIT PRODUCT ══════ -->
+    <div class="modal-overlay" id="productModal">
+      <div class="modal">
+        <div class="modal-head">
+          <h3 id="productModalTitle">Add Product</h3>
+          <button class="modal-close" onclick="closeModal('productModal')">
+            <svg
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="editProductId" />
+          <div class="field">
+            <label>Product Name *</label
+            ><input
+              type="text"
+              id="prodName"
+              placeholder="e.g. Freshauraa Phenyl"
+            />
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label>Category *</label
+              ><select id="prodCategory">
+                <option value="">Select category</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Price (₹) *</label
+              ><input
+                type="number"
+                id="prodPrice"
+                placeholder="e.g. 300"
+                min="0"
+              />
+            </div>
+          </div>
+          <div class="field">
+            <label>Product Image</label>
+            <div class="img-upload-box" id="imgUploadBox">
+              <input type="file" id="prodImageFile" accept="image/*" />
+              <div id="imgUploadContent">
+                <div style="color: var(--muted); margin-bottom: 8px">
+                  <svg
+                    width="32"
+                    height="32"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M4 16l4-4 4 4 4-8 4 8" />
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                  </svg>
+                </div>
+                <p>Click to upload image</p>
+                <span>PNG, JPG up to 5MB</span>
+              </div>
+            </div>
+            <p class="field-hint">Or enter image path / URL:</p>
+            <input
+              type="text"
+              id="prodImageUrl"
+              placeholder="e.g. assets/phenyl1.jpg"
+              style="margin-top: 6px"
+            />
+          </div>
+          <div class="field">
+            <label
+              style="
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                cursor: pointer;
+                text-transform: none;
+                letter-spacing: 0;
+                font-size: 13px;
+              "
+            >
+              <input
+                type="checkbox"
+                id="prodBogo"
+                style="width: auto; accent-color: var(--gold)"
+                checked
+              />
+              BOGO Deal (Buy One Get One)
+            </label>
+          </div>
+          <div class="field">
+            <label>Description (optional)</label
+            ><textarea
+              id="prodDesc"
+              rows="3"
+              placeholder="Short product description..."
+            ></textarea>
+          </div>
+        </div>
+        <div class="modal-foot">
+          <button class="btn btn-outline" onclick="closeModal('productModal')">
+            Cancel
+          </button>
+          <button class="btn btn-gold" id="saveProductBtn" type="button">
+            Save Product
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════ MODAL: MANAGE CATEGORIES ══════ -->
+    <div class="modal-overlay" id="catModal">
+      <div class="modal">
+        <div class="modal-head">
+          <h3>Manage Categories</h3>
+          <button class="modal-close" onclick="closeModal('catModal')">
+            <svg
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="cat-list-container" class="cat-list"></div>
+          <div style="border-top: 1px solid var(--border); padding-top: 18px">
+            <div class="field">
+              <label>Add New Category</label>
+              <div style="display: flex; gap: 10px">
+                <input
+                  type="text"
+                  id="newCatInput"
+                  placeholder="e.g. Kitchen Essentials"
+                  style="flex: 1"
+                />
+                <button class="btn btn-gold" id="addCatBtn">Add</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-foot">
+          <button class="btn btn-gold" onclick="closeModal('catModal')">
+            Done
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════ MODAL: EDIT CATEGORY ══════ -->
+    <div class="modal-overlay" id="editCatModal">
+      <div class="modal" style="width: 380px">
+        <div class="modal-head">
+          <h3>Edit Category</h3>
+          <button class="modal-close" onclick="closeModal('editCatModal')">
+            <svg
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="editCatOldName" />
+          <div class="field">
+            <label>Category Name</label
+            ><input type="text" id="editCatNewName" />
+          </div>
+        </div>
+        <div class="modal-foot">
+          <button class="btn btn-outline" onclick="closeModal('editCatModal')">
+            Cancel
+          </button>
+          <button class="btn btn-gold" id="saveCatEditBtn">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════ MODAL: ORDER DETAIL ══════ -->
+    <div class="modal-overlay" id="orderModal">
+      <div class="modal" style="width: 620px">
+        <div class="modal-head">
+          <h3>Order Details</h3>
+          <button class="modal-close" onclick="closeModal('orderModal')">
+            <svg
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body" id="orderModalBody"><!-- filled by JS --></div>
+        <div class="modal-foot">
+          <div
+            style="
+              margin-right: auto;
+              display: flex;
+              align-items: center;
+              gap: 8px;
+            "
+          >
+            <label
+              style="
+                font-size: 11px;
+                color: var(--muted);
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+              "
+              >Update Status:</label
+            >
+            <select class="filter-select" id="orderStatusSelect">
+              <option value="pending">Pending</option>
+              <option value="processing">Processing</option>
+              <option value="delivered">Delivered</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+            <button class="btn btn-gold btn-sm" id="updateOrderStatusBtn">
+              Update
+            </button>
+          </div>
+          <button class="btn btn-outline" onclick="closeModal('orderModal')">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════ MODAL: CONTACT DETAIL ══════ -->
+    <div class="modal-overlay" id="contactModal">
+      <div class="modal" style="width: 560px">
+        <div class="modal-head">
+          <h3>Message Details</h3>
+          <button class="modal-close" onclick="closeModal('contactModal')">
+            <svg
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body" id="contactModalBody">
+          <!-- filled by JS -->
+        </div>
+        <div class="modal-foot">
+          <button class="btn btn-danger btn-sm" id="deleteContactBtn">
+            Delete Message
+          </button>
+          <button class="btn btn-outline" onclick="closeModal('contactModal')">
+            Close
+          </button>
+          <button class="btn btn-gold" id="markRepliedBtn">
+            Mark as Replied
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast">
+      <div class="toast-dot"></div>
+      <span id="toast-msg"></span>
+    </div>
+
+    <script>
+      // Check authentication
+      if (!localStorage.getItem("token")) {
+        window.location.href = "adminLogin.html";
+      }
+
+      const API = "http://localhost:3000/api";
+      const BACKEND = "http://localhost:3000";
+
+      // Resolve image path — prefix backend URL for uploaded images
+      function imgSrc(path) {
+        if (!path) return "";
+        if (path.startsWith("/uploads/")) return BACKEND + path;
+        return path;
+      }
+
+      // ─────────────────────────────────────────────
+      // STATE
+      // ─────────────────────────────────────────────
+      const DEFAULT_CATEGORIES = [
+        "Home Cleaning",
+        "Household Supplies",
+        "Personal Care",
+        "Uncategorized",
+      ];
+      const DEFAULT_PRODUCTS = [
+        {
+          id: 1,
+          name: "Freshauraa Phenyl",
+          category: "Home Cleaning",
+          price: 300,
+          bogo: true,
+          image: "assets/phenyl1.jpg",
+          desc: "",
+        },
+        {
+          id: 2,
+          name: "Food Wrapping Paper",
+          category: "Uncategorized",
+          price: 325,
+          bogo: true,
+          image: "assets/food1.jpg",
+          desc: "",
+        },
+        {
+          id: 3,
+          name: "Aluminium Foil Roll",
+          category: "Household Supplies",
+          price: 920,
+          bogo: true,
+          image: "assets/aluminium1.jpg",
+          desc: "",
+        },
+        {
+          id: 4,
+          name: "Facial-Car Tissue Box 100",
+          category: "Personal Care",
+          price: 75,
+          bogo: true,
+          image: "assets/tissue1.jpg",
+          desc: "",
+        },
+        {
+          id: 5,
+          name: "Toilet Roll Pack of 10",
+          category: "Household Supplies",
+          price: 390,
+          bogo: true,
+          image: "assets/toiletroll1.jpg",
+          desc: "",
+        },
+        {
+          id: 6,
+          name: "Glass Cleaner 2X Shine 500ml",
+          category: "Home Cleaning",
+          price: 99,
+          bogo: true,
+          image: "assets/glass2.jpg",
+          desc: "",
+        },
+        {
+          id: 7,
+          name: "Dishwash Gel 100 Lemons Power",
+          category: "Home Cleaning",
+          price: 160,
+          bogo: true,
+          image: "assets/dish1.jpg",
+          desc: "",
+        },
+        {
+          id: 8,
+          name: "Floor Cleaner 10X Clean Lemon",
+          category: "Home Cleaning",
+          price: 125,
+          bogo: true,
+          image: "assets/floor1.jpg",
+          desc: "",
+        },
+        {
+          id: 9,
+          name: "Toilet Cleaner",
+          category: "Home Cleaning",
+          price: 145,
+          bogo: true,
+          image: "assets/toiletCleaner.jpg",
+          desc: "",
+        },
+        {
+          id: 10,
+          name: "Disinfectant",
+          category: "Home Cleaning",
+          price: 180,
+          bogo: true,
+          image: "assets/disinfectant.jpg",
+          desc: "",
+        },
+      ];
+
+      function loadState() {
+        try {
+          return {
+            categories: JSON.parse(localStorage.getItem("fa_categories")) || [
+              ...DEFAULT_CATEGORIES,
+            ],
+            products: JSON.parse(localStorage.getItem("fa_products")) || [
+              ...DEFAULT_PRODUCTS,
+            ],
+          };
+        } catch (e) {
+          return {
+            categories: [...DEFAULT_CATEGORIES],
+            products: [...DEFAULT_PRODUCTS],
+          };
+        }
+      }
+      function saveState() {
+        localStorage.setItem("fa_categories", JSON.stringify(state.categories));
+        localStorage.setItem("fa_products", JSON.stringify(state.products));
+      }
+
+      let state = loadState();
+      let nextId = state.products.length
+        ? Math.max(...state.products.map((p) => p.id)) + 1
+        : 1;
+
+      // Try to sync products from backend (if available) so admin panel matches DB/frontend
+      async function refreshProductsState() {
+        try {
+          const res = await fetch(`${API}/products`);
+          const data = await res.json();
+          const backendProducts = Array.isArray(data)
+            ? data
+            : data.products || [];
+          if (!Array.isArray(backendProducts)) {
+            throw new Error("Invalid products response");
+          }
+
+          state.products = backendProducts.map((p, i) => ({
+            // Keep a numeric admin-side id for local table actions.
+            id: typeof p.id === "number" ? p.id : i + 1,
+            _id: p._id || null,
+            name: p.name || "",
+            category: p.category || "Uncategorized",
+            price: p.price || 0,
+            image: p.image || p.imageUrl || "",
+            bogo: typeof p.bogo === "boolean" ? p.bogo : true,
+            desc: p.description || p.desc || "",
+          }));
+
+          const numericIds = state.products
+            .map((p) => (typeof p.id === "number" ? p.id : NaN))
+            .filter((n) => !Number.isNaN(n));
+          nextId = numericIds.length ? Math.max(...numericIds) + 1 : 1;
+          const backendCategories = state.products
+            .map((p) => p.category || "Uncategorized")
+            .filter(Boolean);
+          state.categories = Array.from(
+            new Set([
+              ...state.categories,
+              ...backendCategories,
+              "Uncategorized",
+            ]),
+          );
+
+          saveState();
+          renderProductsTable();
+          return true;
+        } catch (error) {
+          console.warn("Unable to refresh backend products:", error);
+          return false;
+        }
+      }
+
+      async function syncProductsFromBackend() {
+        await refreshProductsState();
+      }
+
+      // live data from backend
+      let allOrders = [];
+      let allContacts = [];
+      let currentOrderId = null;
+      let currentContactId = null;
+
+      // ─────────────────────────────────────────────
+      // NAVIGATION
+      // ─────────────────────────────────────────────
+      const META = {
+        dashboard: {
+          title: "Dashboard",
+          sub: "Overview of your store's performance.",
+        },
+        products: {
+          title: "Products",
+          sub: "Manage your inventory and pricing.",
+        },
+        orders: { title: "Orders", sub: "Process and track customer orders." },
+        contacts: {
+          title: "Contacts",
+          sub: "Customer inquiries and messages.",
+        },
+        about: {
+          title: "About Page",
+          sub: "Edit content and video for the About Us page.",
+        }
+      };
+
+      function switchSection(name) {
+        document
+          .querySelectorAll(".nav-item[data-section]")
+          .forEach((n) =>
+            n.classList.toggle("active", n.dataset.section === name),
+          );
+        document
+          .querySelectorAll(".section")
+          .forEach((s) =>
+            s.classList.toggle("active", s.id === "section-" + name),
+          );
+        document.getElementById("topbarTitle").textContent = META[name].title;
+        document.getElementById("topbarSub").textContent = META[name].sub;
+        document.querySelector(".main").scrollTop = 0;
+        sessionStorage.setItem("fa_active_section", name); // remember active section across reloads
+        if (name === "dashboard") {
+          loadOrders(true);
+          loadContacts(true);
+        }
+        if (name === "products") renderProductsTable();
+        if (name === "orders") loadOrders();
+        if (name === "contacts") loadContacts();
+        if (name === "about") loadAbout();
+      }
+      document
+        .querySelectorAll(".nav-item[data-section]")
+        .forEach((btn) =>
+          btn.addEventListener("click", () =>
+            switchSection(btn.dataset.section),
+          ),
+        );
+
+      // ─────────────────────────────────────────────
+      // HELPERS
+      // ─────────────────────────────────────────────
+      function fmt(dateStr) {
+        if (!dateStr) return "—";
+        const d = new Date(dateStr);
+        return d.toLocaleDateString("en-IN", {
+          day: "2-digit",
+          month: "short",
+          year: "numeric",
+        });
+      }
+      function statusPill(s) {
+        const map = {
+          pending: "pill-pending",
+          processing: "pill-processing",
+          delivered: "pill-delivered",
+          cancelled: "pill-cancelled",
+        };
+        return `<span class="pill ${map[s] || "pill-pending"}">${s || "Pending"}</span>`;
+      }
+      function contactPill(s) {
+        return s === "replied"
+          ? `<span class="pill pill-replied">Replied</span>`
+          : `<span class="pill pill-new">New</span>`;
+      }
+
+      // ─────────────────────────────────────────────
+      // ORDERS — load from backend
+      // ─────────────────────────────────────────────
+      async function loadOrders(dashOnly = false) {
+        try {
+          const res = await fetch(`${API}/orders`);
+          const data = await res.json();
+          allOrders = Array.isArray(data) ? data : data.orders || [];
+        } catch (e) {
+          allOrders = [];
+        }
+
+        // update stats
+        document.getElementById("dash-total-orders").textContent =
+          allOrders.length;
+        document.getElementById("dash-orders-sub").textContent =
+          allOrders.length
+            ? `${allOrders.filter((o) => o.status === "pending" || !o.status).length} pending`
+            : "No orders yet";
+
+        // badge
+        const pending = allOrders.filter(
+          (o) => !o.status || o.status === "pending",
+        ).length;
+        const badge = document.getElementById("orders-badge");
+        badge.textContent = pending;
+        badge.style.display = pending > 0 ? "inline-block" : "none";
+
+        // dashboard preview (last 5)
+        renderDashOrders();
+
+        if (!dashOnly) renderOrdersTable();
+      }
+
+      function renderDashOrders() {
+        const tbody = document.getElementById("dash-orders-body");
+        if (!allOrders.length) {
+          tbody.innerHTML = `<tr><td colspan="6" class="empty-state">No orders yet.</td></tr>`;
+          return;
+        }
+        tbody.innerHTML = allOrders
+          .slice(0, 5)
+          .map(
+            (o) => `
+          <tr>
+            <td class="order-id-cell">${o._id ? o._id.slice(-6).toUpperCase() : "—"}</td>
+            <td>
+              <div style="font-weight:500;">${o.fullName || "—"}</div>
+              <div style="font-size:11px;color:var(--muted);">${o.email || ""}</div>
+            </td>
+            <td style="font-size:12px;">${o.phone || "—"}</td>
+            <td>
+              <div class="products-mini">
+                ${(o.products || [])
+                  .map((p, i) =>
+                    i < 2 ? `<span>${p.name} ×${p.quantity}</span>` : "",
+                  )
+                  .join("")}
+                ${(o.products || []).length > 2 ? `<span>+${o.products.length - 2} more</span>` : ""}
+              </div>
+            </td>
+            <td class="amount-cell">₹${o.totalAmount || 0}</td>
+            <td>${statusPill(o.status)}</td>
+          </tr>
+        `,
+          )
+          .join("");
+      }
+
+      function renderOrdersTable() {
+        const search = (
+          document.getElementById("orders-search").value || ""
+        ).toLowerCase();
+        const status = document.getElementById("orders-status-filter").value;
+        const payment = document.getElementById("orders-payment-filter").value;
+
+        let filtered = allOrders.filter((o) => {
+          if (status && (o.status || "pending") !== status) return false;
+          if (payment && o.paymentMethod !== payment) return false;
+          if (search) {
+            const hay =
+              `${o.fullName} ${o.email} ${o.phone} ${o.city} ${o.state}`.toLowerCase();
+            if (!hay.includes(search)) return false;
+          }
+          return true;
+        });
+
+        document.getElementById("orders-count-label").textContent =
+          `${filtered.length} of ${allOrders.length} orders`;
+
+        const tbody = document.getElementById("all-orders-body");
+        if (!filtered.length) {
+          tbody.innerHTML = `<tr><td colspan="10" class="empty-state">No orders found.</td></tr>`;
+          return;
+        }
+        tbody.innerHTML = filtered
+          .map(
+            (o) => `
+          <tr>
+            <td class="order-id-cell">${o._id ? o._id.slice(-6).toUpperCase() : "—"}</td>
+            <td>
+              <div style="font-weight:500;font-size:13px;">${o.fullName || "—"}</div>
+              <div style="font-size:11px;color:var(--muted);">${o.email || ""}</div>
+            </td>
+            <td style="font-size:12px;">${o.phone || "—"}</td>
+            <td style="font-size:12px;">${o.city || "—"}, ${o.state || "—"}</td>
+            <td>
+              <div class="products-mini">
+                ${(o.products || [])
+                  .map((p, i) =>
+                    i < 2 ? `<span>${p.name} ×${p.quantity}</span>` : "",
+                  )
+                  .join("")}
+                ${(o.products || []).length > 2 ? `<span style="color:var(--gold);">+${o.products.length - 2} more</span>` : ""}
+              </div>
+            </td>
+            <td class="amount-cell">₹${o.totalAmount || 0}</td>
+            <td style="font-size:12px;">${o.paymentMethod || "—"}</td>
+            <td>${statusPill(o.status || "pending")}</td>
+            <td style="font-size:11px;color:var(--muted);">${fmt(o.createdAt)}</td>
+            <td>
+              <div style="display:flex;gap:6px;">
+                <button class="btn btn-outline btn-sm" onclick="openOrderDetail('${o._id}')">View</button>
+                <button class="btn btn-danger btn-sm btn-icon" title="Delete order" onclick="deleteOrder('${o._id}')">
+                  <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+        `,
+          )
+          .join("");
+      }
+
+      async function deleteOrder(id) {
+        if (!confirm("Do you want to delete?")) return;
+        try {
+          await fetch(`${API}/orders/${id}`, { method: "DELETE" });
+        } catch (e) {}
+        allOrders = allOrders.filter((o) => o._id !== id);
+        renderOrdersTable();
+        renderDashOrders();
+        // update stats
+        document.getElementById("dash-total-orders").textContent =
+          allOrders.length;
+        document.getElementById("dash-orders-sub").textContent =
+          allOrders.length
+            ? `${allOrders.filter((o) => o.status === "pending" || !o.status).length} pending`
+            : "No orders yet";
+        const pending = allOrders.filter(
+          (o) => !o.status || o.status === "pending",
+        ).length;
+        const badge = document.getElementById("orders-badge");
+        badge.textContent = pending;
+        badge.style.display = pending > 0 ? "inline-block" : "none";
+        showToast("Order deleted", "success");
+      }
+
+      function openOrderDetail(id) {
+        const o = allOrders.find((x) => x._id === id);
+        if (!o) return;
+        currentOrderId = id;
+        document.getElementById("orderStatusSelect").value =
+          o.status || "pending";
+
+        document.getElementById("orderModalBody").innerHTML = `
+          <div class="detail-grid">
+            <div class="detail-section-title">Customer Information</div>
+            <div class="detail-item"><label>Full Name</label><span>${o.fullName || "—"}</span></div>
+            <div class="detail-item"><label>Email</label><span>${o.email || "—"}</span></div>
+            <div class="detail-item"><label>Phone</label><span>${o.phone || "—"}</span></div>
+            <div class="detail-item"><label>Payment Method</label><span>${o.paymentMethod || "—"}</span></div>
+            <hr class="detail-divider" />
+            <div class="detail-section-title">Delivery Address</div>
+            <div class="detail-full detail-item"><label>Street Address</label><span>${o.streetAddress || "—"}</span></div>
+            <div class="detail-item"><label>City</label><span>${o.city || "—"}</span></div>
+            <div class="detail-item"><label>State</label><span>${o.state || "—"}</span></div>
+            <div class="detail-item"><label>Pincode</label><span>${o.pincode || "—"}</span></div>
+            <div class="detail-item"><label>Order Date</label><span>${fmt(o.createdAt)}</span></div>
+            <hr class="detail-divider" />
+            <div class="detail-section-title">Order Items</div>
+            <div class="detail-full">
+              <table class="order-products-table">
+                <thead><tr><th>Product</th><th>Price</th><th>Qty</th><th>Subtotal</th></tr></thead>
+                <tbody>
+                  ${(o.products || [])
+                    .map(
+                      (p) => `
+                    <tr>
+                      <td>${p.name || "—"}</td>
+                      <td>₹${p.price || 0}</td>
+                      <td>${p.quantity || 1}</td>
+                      <td>₹${(p.price || 0) * (p.quantity || 1)}</td>
+                    </tr>
+                  `,
+                    )
+                    .join("")}
+                  <tr style="border-top:1px solid var(--border);">
+                    <td colspan="3" style="font-weight:600;font-size:13px;">Total</td>
+                    <td style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);">₹${o.totalAmount || 0}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `;
+        openModal("orderModal");
+      }
+
+      document
+        .getElementById("updateOrderStatusBtn")
+        .addEventListener("click", async () => {
+          if (!currentOrderId) return;
+          const newStatus = document.getElementById("orderStatusSelect").value;
+          try {
+            const res = await fetch(`${API}/orders/${currentOrderId}`, {
+              method: "PATCH",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ status: newStatus }),
+            });
+            if (res.ok) {
+              const idx = allOrders.findIndex((o) => o._id === currentOrderId);
+              if (idx > -1) allOrders[idx].status = newStatus;
+              renderOrdersTable();
+              renderDashOrders();
+              closeModal("orderModal");
+              showToast("Order status updated", "success");
+            } else {
+              showToast("Failed to update status", "error");
+            }
+          } catch (e) {
+            // If no backend patch route, update locally only
+            const idx = allOrders.findIndex((o) => o._id === currentOrderId);
+            if (idx > -1) allOrders[idx].status = newStatus;
+            renderOrdersTable();
+            renderDashOrders();
+            closeModal("orderModal");
+            showToast("Status updated locally", "success");
+          }
+        });
+
+      // Filters
+      document
+        .getElementById("orders-search")
+        .addEventListener("input", renderOrdersTable);
+      document
+        .getElementById("orders-status-filter")
+        .addEventListener("change", renderOrdersTable);
+      document
+        .getElementById("orders-payment-filter")
+        .addEventListener("change", renderOrdersTable);
+
+      // ─────────────────────────────────────────────
+      // CONTACTS — load from backend
+      // ─────────────────────────────────────────────
+      async function loadContacts(dashOnly = false) {
+        try {
+          const res = await fetch(`${API}/contact`);
+          const data = await res.json();
+          allContacts = Array.isArray(data) ? data : data.contacts || [];
+        } catch (e) {
+          allContacts = [];
+        }
+
+        // stats
+        document.getElementById("dash-total-contacts").textContent =
+          allContacts.length;
+        document.getElementById("dash-contacts-sub").textContent =
+          allContacts.length
+            ? `${allContacts.filter((c) => !c.status || c.status === "new").length} new`
+            : "No messages yet";
+
+        // badge
+        const newMsgs = allContacts.filter(
+          (c) => !c.status || c.status === "new",
+        ).length;
+        const badge = document.getElementById("contacts-badge");
+        badge.textContent = newMsgs;
+        badge.style.display = newMsgs > 0 ? "inline-block" : "none";
+
+        if (!dashOnly) renderContactsTable();
+      }
+
+      function renderContactsTable() {
+        const search = (
+          document.getElementById("contacts-search").value || ""
+        ).toLowerCase();
+        let filtered = allContacts.filter((c) => {
+          if (!search) return true;
+          return `${c.name} ${c.email} ${c.subject}`
+            .toLowerCase()
+            .includes(search);
+        });
+
+        document.getElementById("contacts-count-label").textContent =
+          `${filtered.length} of ${allContacts.length} messages`;
+
+        const tbody = document.getElementById("contacts-body");
+        if (!filtered.length) {
+          tbody.innerHTML = `<tr><td colspan="7" class="empty-state">No messages found.</td></tr>`;
+          return;
+        }
+        tbody.innerHTML = filtered
+          .map(
+            (c) => `
+          <tr>
+            <td style="font-weight:500;">${c.name || "—"}</td>
+            <td style="font-size:12px;color:var(--muted);">${c.email || "—"}</td>
+            <td style="font-size:12px;">${c.subject || "—"}</td>
+            <td><div class="msg-preview">${c.message || "—"}</div></td>
+            <td style="font-size:11px;color:var(--muted);">${fmt(c.createdAt)}</td>
+            <td>${contactPill(c.status)}</td>
+            <td>
+              <div style="display:flex;gap:6px;">
+                <button class="btn btn-outline btn-sm" onclick="openContactDetail('${c._id}')">View</button>
+                <button class="btn btn-danger btn-sm btn-icon" title="Delete message" onclick="deleteContactDirect('${c._id}')">
+                  <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+        `,
+          )
+          .join("");
+      }
+
+      async function deleteContactDirect(id) {
+        if (!confirm("Do you want to delete this message?")) return;
+        try {
+          await fetch(`${API}/contact/${id}`, { method: "DELETE" });
+        } catch (e) {}
+        allContacts = allContacts.filter((c) => c._id !== id);
+        renderContactsTable();
+        // update stats
+        document.getElementById("dash-total-contacts").textContent =
+          allContacts.length;
+        document.getElementById("dash-contacts-sub").textContent =
+          allContacts.length
+            ? `${allContacts.filter((c) => !c.status || c.status === "new").length} new`
+            : "No messages yet";
+        const newMsgs = allContacts.filter(
+          (c) => !c.status || c.status === "new",
+        ).length;
+        const badge = document.getElementById("contacts-badge");
+        badge.textContent = newMsgs;
+        badge.style.display = newMsgs > 0 ? "inline-block" : "none";
+        showToast("Message deleted", "success");
+      }
+
+      function openContactDetail(id) {
+        const c = allContacts.find((x) => x._id === id);
+        if (!c) return;
+        currentContactId = id;
+
+        document.getElementById("contactModalBody").innerHTML = `
+          <div class="detail-grid">
+            <div class="detail-item"><label>Name</label><span>${c.name || "—"}</span></div>
+            <div class="detail-item"><label>Email</label><a href="mailto:${c.email}" style="color:var(--gold);font-size:13px;">${c.email || "—"}</a></div>
+            <div class="detail-full detail-item"><label>Subject</label><span>${c.subject || "—"}</span></div>
+            <div class="detail-item"><label>Received</label><span>${fmt(c.createdAt)}</span></div>
+            <div class="detail-item"><label>Status</label>${contactPill(c.status)}</div>
+            <div class="detail-full detail-item">
+              <label>Message</label>
+              <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px;font-size:13px;line-height:1.7;margin-top:4px;white-space:pre-wrap;">${c.message || "—"}</div>
+            </div>
+          </div>
+        `;
+        openModal("contactModal");
+      }
+
+      document
+        .getElementById("markRepliedBtn")
+        .addEventListener("click", async () => {
+          if (!currentContactId) return;
+          try {
+            await fetch(`${API}/contact/${currentContactId}`, {
+              method: "PATCH",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ status: "replied" }),
+            });
+          } catch (e) {}
+          const idx = allContacts.findIndex((c) => c._id === currentContactId);
+          if (idx > -1) allContacts[idx].status = "replied";
+          renderContactsTable();
+          loadContacts(true);
+          closeModal("contactModal");
+          showToast("Marked as replied", "success");
+        });
+
+      document
+        .getElementById("deleteContactBtn")
+        .addEventListener("click", async () => {
+          if (!confirm("Delete this message?")) return;
+          try {
+            await fetch(`${API}/contact/${currentContactId}`, {
+              method: "DELETE",
+            });
+          } catch (e) {}
+          allContacts = allContacts.filter((c) => c._id !== currentContactId);
+          renderContactsTable();
+          loadContacts(true);
+          closeModal("contactModal");
+          showToast("Message deleted", "success");
+        });
+
+      document
+        .getElementById("contacts-search")
+        .addEventListener("input", renderContactsTable);
+
+      // ─────────────────────────────────────────────
+      // PRODUCTS
+      // ─────────────────────────────────────────────
+      function renderProductsTable() {
+        document.getElementById("prod-count-label").textContent =
+          state.products.length + " products";
+        document.getElementById("dash-total-products").textContent =
+          state.products.length;
+        const tbody = document.getElementById("products-table-body");
+        if (!state.products.length) {
+          tbody.innerHTML = `<tr><td colspan="6" class="empty-state">No products yet.</td></tr>`;
+          return;
+        }
+        tbody.innerHTML = state.products
+          .map(
+            (p) => `
+          <tr>
+            <td>
+              ${
+                p.image
+                  ? `<img src="${imgSrc(p.image)}" class="prod-thumb" alt="${p.name}" onerror="this.style.display='none'" />`
+                  : `<div class="prod-thumb-placeholder"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" opacity=".4"><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div>`
+              }
+            </td>
+            <td>
+              <div style="font-weight:500;font-size:13px;">${p.name}</div>
+              ${p.desc ? `<div style="font-size:11px;color:var(--muted);margin-top:2px;">${p.desc}</div>` : ""}
+            </td>
+            <td><span class="cat-chip">${p.category}</span></td>
+            <td style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--gold);">₹${p.price}</td>
+            <td>${p.bogo ? '<span class="bogo-tag">BOGO</span>' : '<span style="color:var(--dim);font-size:11px;">—</span>'}</td>
+            <td>
+              <div style="display:flex;gap:6px;">
+                <button type="button" class="btn btn-outline btn-sm btn-icon" title="Edit" data-action="edit" data-product-id="${p.id}">
+                  <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                </button>
+                <button type="button" class="btn btn-danger btn-sm btn-icon" title="Delete" data-action="delete" data-product-id="${p.id}">
+                  <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+        `,
+          )
+          .join("");
+        // bind action handlers after DOM insertion
+        if (typeof attachProductButtons === "function") attachProductButtons();
+      }
+
+      function populateCategoryDropdown() {
+        const sel = document.getElementById("prodCategory");
+        const cur = sel.value;
+        sel.innerHTML =
+          '<option value="">Select category</option>' +
+          state.categories
+            .map(
+              (c) =>
+                `<option value="${c}"${c === cur ? " selected" : ""}>${c}</option>`,
+            )
+            .join("");
+      }
+
+      document.getElementById("addProductBtn").addEventListener("click", () => {
+        document.getElementById("productModalTitle").textContent =
+          "Add Product";
+        document.getElementById("editProductId").value = "";
+        document.getElementById("prodName").value = "";
+        document.getElementById("prodPrice").value = "";
+        document.getElementById("prodDesc").value = "";
+        document.getElementById("prodImageUrl").value = "";
+        document.getElementById("prodBogo").checked = true;
+        document.getElementById("prodImageFile").value = "";
+        selectedProductImageFile = null;
+        document.getElementById("imgUploadContent").innerHTML = `
+          <div style="color:var(--muted);margin-bottom:8px;"><svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 16l4-4 4 4 4-8 4 8"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div>
+          <p>Click to upload image</p><span>PNG, JPG up to 5MB</span>`;
+        populateCategoryDropdown();
+        document.getElementById("prodCategory").value = "";
+        openModal("productModal");
+      });
+
+      // Attach click handlers to product action buttons. We create a small helper
+      // to (re)bind listeners after rendering so clicks on SVGs or nested elements
+      // reliably trigger the action.
+      function attachProductButtons() {
+        const tbody = document.getElementById("products-table-body");
+        tbody.querySelectorAll("button[data-action]").forEach((orig) => {
+          // replace node with a clone to remove previous listeners
+          const clone = orig.cloneNode(true);
+          orig.parentNode.replaceChild(clone, orig);
+        });
+        tbody.querySelectorAll("button[data-action]").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            const action = btn.getAttribute("data-action");
+            const productId = btn.getAttribute("data-product-id");
+            console.log("product button clicked:", {
+              action,
+              productId,
+              target: e.target,
+            });
+            if (!productId) return;
+            if (action === "edit") openEditProduct(productId);
+            if (action === "delete") deleteProduct(productId);
+          });
+        });
+      }
+
+      // Safety-net delegation: also listen on tbody for clicks (handles SVG/inner element clicks)
+      (function addTableFallback() {
+        const tbody = document.getElementById("products-table-body");
+        if (!tbody) return;
+        tbody.addEventListener("click", (event) => {
+          const btn =
+            event.target.closest && event.target.closest("button[data-action]");
+          if (!btn) return;
+          const action = btn.getAttribute("data-action");
+          const productId = btn.getAttribute("data-product-id");
+          console.log("tbody fallback click:", {
+            action,
+            productId,
+            clicked: event.target,
+          });
+          if (!productId) return;
+          if (action === "edit") openEditProduct(productId);
+          if (action === "delete") deleteProduct(productId);
+        });
+      })();
+
+      function openEditProduct(id) {
+        const p = state.products.find((x) => x.id == id || x._id == id);
+        if (!p) return;
+        // Clear previously selected file so editing doesn't reuse old selection
+        selectedProductImageFile = null;
+        document.getElementById("productModalTitle").textContent =
+          "Edit Product";
+        document.getElementById("editProductId").value = id;
+        document.getElementById("prodName").value = p.name;
+        document.getElementById("prodPrice").value = p.price;
+        document.getElementById("prodDesc").value = p.desc || "";
+        document.getElementById("prodImageUrl").value = p.image || "";
+        document.getElementById("prodBogo").checked = p.bogo;
+        populateCategoryDropdown();
+        document.getElementById("prodCategory").value = p.category;
+        document.getElementById("imgUploadContent").innerHTML = p.image
+          ? `<img src="${imgSrc(p.image)}" class="img-preview" alt="preview" onerror="this.src=''" /><p style="font-size:11px;color:var(--muted);">Current image</p>`
+          : `<div style="color:var(--muted);margin-bottom:8px;"><svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 16l4-4 4 4 4-8 4 8"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div><p>Click to upload image</p><span>PNG, JPG up to 5MB</span>`;
+        openModal("productModal");
+      }
+
+      let selectedProductImageFile = null; // store the actual file for upload
+
+      document
+        .getElementById("prodImageFile")
+        .addEventListener("change", function () {
+          const file = this.files[0];
+          if (!file) return;
+          selectedProductImageFile = file;
+          const previewUrl = URL.createObjectURL(file);
+          document.getElementById("prodImageUrl").value = ""; // clear URL input since file is selected
+          document.getElementById("imgUploadContent").innerHTML =
+            `<img src="${previewUrl}" class="img-preview" alt="preview" /><p style="font-size:11px;color:var(--muted);">Image selected</p>`;
+        });
+
+      document
+        .getElementById("prodImageUrl")
+        .addEventListener("input", function () {
+          if (this.value)
+            doc

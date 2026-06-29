@@ -1,0 +1,926 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Fresh Auraa</title>
+  <meta name="description"
+    content="Read the latest tips, guides, and stories on eco-friendly living, home care, and plant-based cleaning from Fresh Auraa." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Montserrat:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <style>
+    :root {
+      --hero-bg: #1a1c17;
+      --footer-bg: #0f1109;
+      --page-bg: #f2f2f0;
+      --page-alt: #ebebea;
+      --page-card: #ffffff;
+      --page-lift: #f7f7f6;
+      --text-dark: #1e211a;
+      --text-mid: #3a3d36;
+      --text-soft: #6b6e65;
+      --accent: #b8892f;
+      --accent-lt: #d4a84b;
+      --text-white: #ffffff;
+      --text-gold: #e5d9c5;
+      --border: rgba(184, 137, 47, 0.2);
+      --border-lt: rgba(184, 137, 47, 0.1);
+      --border-dark: rgba(229, 217, 197, 0.1);
+      --font-serif: "Cinzel", serif;
+      --font-sans: "Montserrat", sans-serif;
+      --radius: 4px;
+      --radius-lg: 10px;
+      --trans: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--page-bg);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    /* ── NAV ─────────────────────────── */
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 5rem;
+      background: rgba(26, 28, 23, 0.97);
+      border-bottom: 1px solid var(--border-dark);
+      backdrop-filter: blur(14px);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-logo {
+      height: 90px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 3.5rem;
+    }
+
+    nav ul li a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-white);
+      position: relative;
+      padding-bottom: 5px;
+      transition: color var(--trans);
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--text-white);
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover::after,
+    nav ul li a.active::after {
+      width: 100%;
+    }
+
+    .cart-nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid var(--accent);
+      color: var(--accent-lt);
+      background: rgba(184, 137, 47, 0.12);
+      margin-left: 2rem;
+      position: relative;
+      transition: all var(--trans);
+      flex-shrink: 0;
+    }
+
+    .cart-nav-link:hover {
+      background: rgba(184, 137, 47, 0.22);
+      transform: scale(1.08);
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.55rem;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(0.6);
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      pointer-events: none;
+    }
+
+    .cart-badge.has-items {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* ── HERO BANNER ─────────────────── */
+    .blog-hero {
+      width: 100%;
+      padding-top: 170px;
+      padding-bottom: 76px;
+      background: linear-gradient(135deg,
+          #f5f0e8 0%,
+          #ede5d5 50%,
+          #f0ebe0 100%);
+      border-bottom: 1px solid rgba(184, 137, 47, 0.15);
+      text-align: center;
+      position: relative;
+    }
+
+    .blog-hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 5rem;
+    }
+
+    .sec-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: block;
+      font-weight: 600;
+    }
+
+    .blog-title {
+      font-family: var(--font-serif);
+      font-size: 3.2rem;
+      font-weight: 400;
+      color: var(--text-dark);
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      margin-bottom: 14px;
+    }
+
+    .blog-sub {
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      color: var(--text-soft);
+      text-transform: uppercase;
+    }
+
+    /* ── GRID ────────────────────────── */
+    .blog-main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 5rem 100px;
+      width: 100%;
+    }
+    /* .blog-grid replaced by Bootstrap row */
+
+    /* ── CARD ────────────────────────── */
+    .blog-card {
+      background: var(--page-card);
+      border: 1px solid rgba(184, 137, 47, 0.15);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.02);
+      display: flex;
+      flex-direction: column;
+      transition:
+        transform var(--trans),
+        box-shadow var(--trans),
+        border-color var(--trans);
+      cursor: pointer;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent);
+      box-shadow: 0 14px 36px rgba(184, 137, 47, 0.1);
+    }
+
+    .card-img-wrap {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      background: var(--page-lift);
+    }
+
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .blog-card:hover .card-img-wrap img {
+      transform: scale(1.05);
+    }
+
+    .card-body {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-cat {
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      color: var(--text-dark);
+      margin-bottom: 14px;
+      line-height: 1.4;
+      font-weight: 500;
+    }
+
+    .card-desc {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      flex: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 18px;
+      border-top: 1px solid rgba(184, 137, 47, 0.08);
+      font-size: 0.7rem;
+      color: var(--text-soft);
+      letter-spacing: 1px;
+    }
+
+    .read-more-link {
+      font-weight: 600;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color var(--trans);
+    }
+
+    .blog-card:hover .read-more-link {
+      color: var(--accent-dk);
+    }
+
+    /* ── ARTICLE MODAL ──────────────────────── */
+    .article-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 17, 9, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--trans);
+      padding: 40px 20px;
+    }
+
+    .article-modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .article-modal {
+      background: var(--page-card);
+      width: 100%;
+      max-width: 800px;
+      max-height: 90vh;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      overflow-y: auto;
+      position: relative;
+      transform: translateY(40px) scale(0.95);
+      transition: transform var(--trans);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .article-modal-overlay.active .article-modal {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      color: var(--text-dark);
+      transition: all 0.2s ease;
+    }
+
+    .modal-close-btn:hover {
+      background: var(--accent);
+      color: white;
+      transform: scale(1.1);
+    }
+
+    .article-hero {
+      width: 100%;
+      height: 340px;
+      position: relative;
+      background: var(--page-lift);
+    }
+
+    .article-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .article-content {
+      padding: 50px 60px;
+    }
+
+    .article-meta {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .article-cat {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .article-date {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    .article-title {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      line-height: 1.2;
+      color: var(--text-dark);
+      margin-bottom: 30px;
+    }
+
+    .article-body {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text-mid);
+    }
+
+    .article-body p.lead {
+      font-size: 1.05rem;
+      color: var(--text-dark);
+      margin-bottom: 30px;
+    }
+
+    .article-body p {
+      margin-bottom: 24px;
+    }
+
+    .article-body h3 {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      margin: 36px 0 16px;
+      color: var(--text-dark);
+    }
+
+    @media (max-width: 768px) {
+      .article-content {
+        padding: 30px 24px;
+      }
+
+      .article-title {
+        font-size: 1.6rem;
+      }
+
+      .article-hero {
+        height: 240px;
+      }
+    }
+
+    /* ── FOOTER ──────────────────────── */
+    footer {
+      background: var(--footer-bg);
+      border-top: 1px solid rgba(229, 217, 197, 0.1);
+      padding: 64px 5rem 28px;
+      margin-top: auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-grid>div:first-child {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-gold);
+      margin-bottom: 0;
+    }
+
+    .footer-logo span {
+      color: #c9a96e;
+    }
+
+    .footer-contact p {
+      font-size: 0.75rem;
+      color: rgba(229, 217, 197, 0.5);
+      margin-bottom: 7px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      font-weight: 600;
+    }
+
+    .contact-icon {
+      width: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #c9a96e;
+      flex: 0 0 18px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-sans);
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #c9a96e;
+      margin-bottom: 18px;
+      opacity: 0.85;
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: 0.78rem;
+      color: rgba(229, 217, 197, 0.5);
+      margin-bottom: 11px;
+      transition: color var(--trans);
+      font-weight: 600;
+    }
+
+    .footer-col a:hover {
+      color: #c9a96e;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      padding-top: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-copy {
+      font-size: 0.68rem;
+      color: rgba(229, 217, 217, 0.3);
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+
+    .social-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-btn {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: #000;
+      border: 1px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(229, 217, 197, 0.5);
+      font-size: 0.7rem;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      font-weight: 500;
+      transition: all var(--trans);
+    }
+
+    .social-btn:hover {
+      border-color: #c9a96e;
+      color: #c9a96e;
+      transform: scale(1.1);
+    }
+
+    .social-btn img {
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
+    }
+
+    /* ── RESPONSIVE ──────────────────── */
+    @media (max-width: 980px) {
+      /* .blog-grid handled by Bootstrap */
+
+      .site-nav {
+        padding: 1.2rem 3rem;
+      }
+
+      .blog-hero-inner {
+        padding: 0 3rem;
+      }
+
+      .blog-main {
+        padding: 0 3rem 80px;
+      }
+
+      footer {
+        padding: 48px 3rem 24px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      /* .blog-grid handled by Bootstrap */
+
+      .blog-hero-title {
+        font-size: 2.2rem;
+      }
+
+      .site-nav {
+        padding: 1rem 2rem;
+      }
+
+      nav ul {
+        gap: 1.5rem;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid>div:first-child {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+        @media (max-width: 768px) {
+        footer { padding: 40px 2rem 24px !important; }
+        .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+        .footer-grid > div:first-child { flex-direction: column !important; align-items: flex-start !important; gap: 1rem !important; }
+      }
+      @media (max-width: 768px) {
+        .nav-logo { height: 65px !important; margin-top: 0 !important; }
+      }
+      a, .nav-logo a, nav ul li a { text-decoration: none !important; }
+</style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="site-nav">
+    <div class="logo">
+      <a href="c.html">
+        <img src="assets/logo5.png" alt="Fresh Auraa" class="nav-logo" onerror="
+              this.onerror = null;
+              this.src = 'logo5.png';
+            " />
+      </a>
+    </div>
+      <ul class="d-none d-lg-flex align-items-center m-0">
+      <li><a href="c.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="d-flex align-items-center">
+<a class="cart-nav-link" href="cart.html" aria-label="Cart">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <path d="M16 10a4 4 0 0 1-8 0" />
+      </svg>
+      <span class="cart-badge" id="cartBadge">0</span>
+    </a>
+        <!-- Mobile Hamburger Button -->
+      <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNav" aria-controls="mobileNav" style="background: none; border: none; color: white; font-size: 1.5rem; margin-left: 15px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="mobileNav" aria-labelledby="mobileNavLabel" style="width: 250px;">
+      <div class="offcanvas-header border-bottom border-secondary">
+        <h5 class="offcanvas-title" style="font-family: var(--font-serif); letter-spacing: 2px;" id="mobileNavLabel">MENU</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" style="gap: 1rem; list-style: none; padding: 0;">
+          <li><a href="c.html" class="text-white text-decoration-none d-block py-2" style="font-size: 0.9rem; letter-spacing: 2px;">HOME</a></li>
+          <li><a href="products.html" class="text-white text-decoration-none d-block py-2" style="font-size: 0.9rem; letter-spacing: 2px;">PRODUCTS</a></li>
+          <li><a href="about.html" class="text-white text-decoration-none d-block py-2" style="font-size: 0.9rem; letter-spacing: 2px;">ABOUT</a></li>
+          <li><a href="blog.html" class="text-white text-decoration-none d-block py-2" style="font-size: 0.9rem; letter-spacing: 2px;">BLOG</a></li>
+          <li><a href="contact.html" class="text-white text-decoration-none d-block py-2" style="font-size: 0.9rem; letter-spacing: 2px;">CONTACT</a></li>
+        </ul>
+      </div>
+    </div>
+
+  <!-- HERO BANNER -->
+  <header class="blog-hero">
+    <div class="blog-hero-inner">
+      <span class="sec-eyebrow">Fresh Auraa Journal</span>
+      <h1 class="blog-title">Purity &amp; Care</h1>
+      <p class="blog-sub">Stories &amp; Guides for a Sustainable Lifestyle</p>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="blog-main container">
+    <!-- Grid -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-4" id="blogGrid">
+      <!-- Dynamic blogs populated here via JS -->
+    </div>
+  </main>
+
+  <!-- ARTICLE MODAL -->
+  <div class="article-modal-overlay" id="articleModalOverlay">
+    <div class="article-modal">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close Article">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="article-hero">
+        <img src="" alt="Article Image" id="modalImg" />
+      </div>
+      <div class="article-content">
+        <div class="article-meta">
+          <span class="article-cat" id="modalCat"></span>
+          <span class="article-date" id="modalDate"></span>
+        </div>
+        <h1 class="article-title" id="modalTitle"></h1>
+        <div class="article-body" id="modalBody">
+          <!-- Dynamic content injected via JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <img src="assets/logo5.png" alt="Fresh Auraa logo" class="footer-logo-img" />
+        </div>
+        <div class="footer-contact">
+          <p>
+            <span class="contact-icon">☎</span><span>+91-76699-00247</span>
+          </p>
+          <p>
+            <span class="contact-icon">✉</span><span>cs@buybuycart.com</span>
+          </p>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="products.html#home-cleaning">Home Cleaning</a>
+        <a href="products.html#household-supplies">Household Supplies</a>
+        <a href="products.html#personal-care">Personal Care</a>
+        <a href="products.html#bogo">BOGO Deals</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="blog.html">Blog</a>
+      </div>
+      <div class="footer-col">
+        <h4>Shop On</h4>
+        <a href="https://www.amazon.in" target="_blank" rel="noopener noreferrer">Amazon</a>
+        <a href="https://blinkit.com" target="_blank" rel="noopener noreferrer">Blinkit</a>
+        <a href="https://www.indiamart.com" target="_blank" rel="noopener noreferrer">IndiaMart</a>
+        <a href="https://buybuycart.com" target="_blank" rel="noopener noreferrer">Buy Buy Cart</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 myseosmo. All rights reserved.</span>
+      <div class="social-row">
+        <a class="social-btn" href="https://www.facebook.com/freshauraa" target="_blank" rel="noopener noreferrer"
+          aria-label="Facebook"><img src="assets/facebook.jpg" alt="Facebook" /></a>
+        <a class="social-btn" href="https://www.x.com/freshauraa" target="_blank" rel="noopener noreferrer"
+          aria-label="X"><img src="assets/X.jpg" alt="X" /></a>
+        <a class="social-btn" href="https://www.instagram.com/freshauraa.in/" target="_blank" rel="noopener noreferrer"
+          aria-label="Instagram"><img src="assets/instagram.jpg" alt="Instagram" /></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sync cart badge count
+    (function () {
+      const items = JSON.parse(localStorage.getItem("freshAuraCart") || "[]");
+      const total = items.reduce((s, i) => s + i.qty, 0);
+      const badge = document.getElementById("cartBadge");
+      if (badge && total > 0) {
+        badge.textContent = total > 99 ? "99+" : total;
+        badge.classList.add("has-items");
+      }
+    })();
+
+    // Article Modal Logic
+    const modalOverlay = document.getElementById('articleModalOverlay');
+    const closeBtn = document.getElementById('modalCloseBtn');
+    const modalImg = document.getElementById('modalImg');
+    const modalCat = document.getElementById('modalCat');
+    const modalDate = document.getElementById('modalDate');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+
+    const BACKEND = "http://localhost:3000";
+    const API = "http://localhost:3000/api";
+
+    async function fetchAndRenderBlogs() {
+      try {
+        const res = await fetch(`${API}/blog`);
+        const blogs = await res.json();
+        const grid = document.getElementById('blogGrid');
+
+        if (!blogs || blogs.length === 0) {
+          grid.innerHTML = '<p style="text-align:center; color:var(--text-soft); grid-column:1/-1; padding: 40px;">No blogs found. Check back later!</p>';
+          return;
+        }
+
+        grid.innerHTML = '';
+
+        blogs.forEach(blog => {
+          const dateStr = new Date(blog.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+          const snippet = blog.text.length > 120 ? blog.text.substring(0, 120) + '...' : blog.text;
+          const imgSrc = blog.image ? (blog.image.startsWith('http') ? blog.image : BACKEND + blog.image) : 'assets/fresh.png';
+
+          const cardHtml = `
+              <div class="col">
+                <article class="blog-card h-100" data-id="${blog._id}">
+                  <div class="card-img-wrap">
+                    <img src="${imgSrc}" alt="${blog.title}" onerror="this.src='assets/fresh.png'" />
+                  </div>
+                  <div class="card-body d-flex flex-column">
+                    <span class="card-cat">Article</span>
+                    <h3 class="card-title">${blog.title}</h3>
+                    <p class="card-desc flex-grow-1">
+                      ${snippet}
+                    </p>
+                    <div class="card-footer mt-auto">
+                      <span>${dateStr}</span>
+                      <span class="read-more-link">Read full <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            `;
+
+          grid.insertAdjacentHTML('beforeend', cardHtml);
+        });
+
+        // Add click event for modals
+        document.querySelectorAll('.blog-card').forEach(card => {
+          card.addEventListener('click', () => {
+            const id = card.getAttribute('data-id');
+            const b = blogs.find(x => x._id === id);
+            if (!b) return;
+
+            modalImg.src = b.image ? (b.image.startsWith('http') ? b.image : BACKEND + b.image) : 'assets/fresh.png';
+            modalCat.textContent = "Article";
+            modalTitle.textContent = b.title;
+            modalDate.textContent = new Date(b.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+            // split new lines into paragraphs
+            const paragraphs = b.text.split('\\n').map(p => p.trim()).filter(p => p.length > 0);
+            const bodyHtml = paragraphs.map(p => `<p>${p}</p>`).join('');
+            modalBody.innerHTML = bodyHtml;
+
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          });
+        });
+
+      } catch (err) {
+        console.error("Failed to load blogs:", err);
+        document.getElementById('blogGrid').innerHTML = '<p style="text-align:center; color:var(--text-soft); grid-column:1/-1;">Could not load blogs at this time.</p>';
+      }
+    }
+
+    fetchAndRenderBlogs();
+
+    function closeModal() {
+      modalOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) closeModal();
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <!-- WhatsApp Floating Icon -->
+    <a href="https://wa.me/" target="_blank" style="position: fixed; bottom: 30px; right: 30px; z-index: 9999; font-size: 45px; text-decoration: none; line-height: 1; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+      <i class="fa-brands fa-square-whatsapp fa-beat fa-sm fa-width-auto" style="color: #24cc63;"></i>
+    </a>
+</body>
+
+</html>
+
+
