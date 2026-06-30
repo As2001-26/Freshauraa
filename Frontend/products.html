@@ -1164,18 +1164,21 @@
   </footer>
 
   <script>
-    //------
+    const API_BASE = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" || window.location.protocol === "file:")
+      ? "http://localhost:3000"
+      : "https://freshauraa.onrender.com";
+
     function resolveProductImage(image) {
       if (!image) return "";
       if (image.startsWith("http://") || image.startsWith("https://"))
         return image;
-      if (image.startsWith("/")) return `http://localhost:3000${image},https://freshauraa.onrender.com${image}`;
+      if (image.startsWith("/")) return `${API_BASE}${image}`;
       return image;
     }
 
     async function loadProducts() {
       try {
-        const response = await fetch("http://localhost:3000/api/products", "https://freshauraa.onrender.com/api/products");
+        const response = await fetch(`${API_BASE}/api/products`);
         const products = await response.json();
         const grid = document.getElementById("prod-grid");
         grid.innerHTML = "";
@@ -1212,6 +1215,7 @@
                     </div>
                   </div>
                 </div>
+              </div>
             `;
         });
         restoreQtyFromCart();
