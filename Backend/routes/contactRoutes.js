@@ -11,23 +11,23 @@ const transporter = nodemailer.createTransport({
   secure: process.env.SMTP_PORT === "465", // true for 465, false for 587 or other ports
   auth: {
     user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS
-  }
+    pass: process.env.SMTP_PASS,
+  },
 });
 
 // Save Contact Form & Send Email
 router.post("/", async (req, res) => {
   try {
     const { name, email, subject, message } = req.body;
-    
+
     // Save to Database
     const contact = new Contact({ name, email, subject, message });
     await contact.save();
 
     // Send Email Notification
     const mailOptions = {
-      from: `"${name} (Fresh Auraa)" <${process.env.SMTP_USER || "cs@buybuycart.com"}>`,
-      to: "cs@buybuycart.com",
+      from: `"${name} (Fresh Auraa)" <${process.env.SMTP_USER || "cs@freshauraa.in"}>`,
+      to: "cs@freshauraa.in",
       replyTo: email,
       subject: `Fresh Auraa Contact: ${subject}`,
       html: `
@@ -65,15 +65,21 @@ router.post("/", async (req, res) => {
             This email was automatically generated from the contact form on Fresh Auraa.
           </div>
         </div>
-      `
+      `,
     };
 
     // Trigger email send in background/async
     transporter.sendMail(mailOptions, (mailErr, info) => {
       if (mailErr) {
-        console.error("Nodemailer Error: Failed to send contact email to cs@buybuycart.com:", mailErr.message);
+        console.error(
+          "Nodemailer Error: Failed to send contact email to cs@freshauraa.in:",
+          mailErr.message,
+        );
       } else {
-        console.log("Contact form email sent successfully to cs@buybuycart.com. Message ID:", info.messageId);
+        console.log(
+          "Contact form email sent successfully to cs@freshauraa.in. Message ID:",
+          info.messageId,
+        );
       }
     });
 
@@ -100,7 +106,7 @@ router.patch("/:id", async (req, res) => {
     const contact = await Contact.findByIdAndUpdate(
       req.params.id,
       { status: req.body.status },
-      { new: true }
+      { new: true },
     );
     if (!contact) return res.status(404).json({ message: "Message not found" });
     res.json({ success: true, contact });
