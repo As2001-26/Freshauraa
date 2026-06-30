@@ -10,6 +10,12 @@
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Montserrat:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
     <style>
       :root {
         --hero-bg: #1a1c17;
@@ -91,7 +97,7 @@
         z-index: 200;
         background: rgba(26, 28, 23, 0.95);
         backdrop-filter: blur(10px);
-        padding: 1.2rem 5rem;
+        padding: 0.2rem 5rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -139,11 +145,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 42px; height: 42px;
+        width: 42px;
+        height: 42px;
         border-radius: 50%;
         border: 1.5px solid #b8892f;
         color: #d4a84b;
-        background: rgba(184,137,47,0.12);
+        background: rgba(184, 137, 47, 0.12);
         margin-left: 1.5rem;
         position: relative;
         transition: all 0.35s ease;
@@ -151,27 +158,32 @@
         text-decoration: none;
       }
       .cart-nav-link:hover {
-        background: rgba(184,137,47,0.22);
+        background: rgba(184, 137, 47, 0.22);
         transform: scale(1.08);
       }
       .cart-badge {
         position: absolute;
-        top: -6px; right: -6px;
+        top: -6px;
+        right: -6px;
         background: #b8892f;
         color: #fff;
         font-size: 0.55rem;
         font-weight: 700;
-        width: 18px; height: 18px;
+        width: 18px;
+        height: 18px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         opacity: 0;
         transform: scale(0.6);
-        transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         pointer-events: none;
       }
-      .cart-badge.has-items { opacity: 1; transform: scale(1); }
+      .cart-badge.has-items {
+        opacity: 1;
+        transform: scale(1);
+      }
 
       /* HERO */
       .contact-hero {
@@ -253,7 +265,7 @@
       /* QUICK INFO STRIP */
       .quick-strip {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 18px;
         max-width: 1100px;
         margin: -46px auto 0;
@@ -511,7 +523,9 @@
         appearance: none;
         -webkit-appearance: none;
         -moz-appearance: none;
-        background: #fcfcfb url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b6e65' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 18px center/15px;
+        background: #fcfcfb
+          url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b6e65' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")
+          no-repeat right 18px center/15px;
         cursor: pointer;
       }
       select:invalid {
@@ -591,61 +605,128 @@
       /* FOOTER */
       footer {
         background: var(--footer-bg);
-        padding: 54px 5rem 26px;
+        border-top: 1px solid rgba(229, 217, 197, 0.1);
+        padding: 64px 5rem 28px;
       }
-      .footer-top {
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 48px;
+        margin-bottom: 48px;
+      }
+      .footer-grid > div:first-child {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 24px;
-        padding-bottom: 28px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-        margin-bottom: 22px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
       }
-      .footer-logo-row {
+      .footer-logo {
+        font-family: var(--font-serif);
+        font-size: 1.4rem;
+        font-weight: 400;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--text-gold);
+        margin-bottom: 0;
+      }
+      .footer-logo span {
+        color: #c9a96e;
+      }
+      .footer-logo-img {
+        width: 340px;
+        height: auto;
+        display: block;
+        object-fit: contain;
+        margin-top: -18px;
+        margin-bottom: -88px;
+      }
+      .footer-contact {
+        width: 340px;
+        display: flex;
+        justify-content: center;
+        margin-top: 0;
+      }
+      .footer-contact p {
+        font-size: 0.75rem;
+        color: rgba(229, 217, 197, 0.5);
+        margin-bottom: 0;
         display: flex;
         align-items: center;
-        gap: 14px;
+        gap: 8px;
+        white-space: nowrap;
+        font-weight: 600;
       }
-      .footer-logo-row img {
-        height: 160px;
-        width: auto;
+      .contact-icon {
+        width: 18px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #c9a96e;
+        flex: 0 0 18px;
       }
-      .footer-tag {
+      .footer-col h4 {
+        font-family: var(--font-sans);
+        font-size: 0.6rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #c9a96e;
+        margin-bottom: 18px;
+        opacity: 0.85;
+      }
+      .footer-col a {
+        display: block;
         font-size: 0.78rem;
         color: rgba(229, 217, 197, 0.5);
-      }
-      .footer-links {
-        display: flex;
-        gap: 28px;
-        flex-wrap: wrap;
-      }
-      .footer-links a {
-        font-size: 0.74rem;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        color: rgba(229, 217, 197, 0.6);
+        margin-bottom: 11px;
         transition: color var(--trans);
+        font-weight: 600;
       }
-      .footer-links a:hover {
-        color: var(--text-gold);
+      .footer-col a:hover {
+        color: #c9a96e;
       }
       .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+        padding-top: 22px;
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        flex-wrap: wrap;
-        gap: 12px;
+        justify-content: space-between;
       }
       .footer-copy {
         font-size: 0.68rem;
         color: rgba(229, 217, 197, 0.3);
         letter-spacing: 0.5px;
       }
-      .footer-bottom .social-row .social-btn {
+
+      footer .social-row {
+        display: flex;
+        gap: 10px;
+      }
+      footer .social-btn {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
         background: #000;
-        border-color: #000;
+        border: 1px solid #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(229, 217, 197, 0.5);
+        font-size: 0.7rem;
+        cursor: pointer;
+        font-family: var(--font-sans);
+        font-weight: 500;
+        transition: all var(--trans);
+      }
+      footer .social-btn:hover {
+        border-color: #c9a96e;
+        color: #c9a96e;
+        transform: scale(1.1);
+        box-shadow: none;
+      }
+      footer .social-btn img {
+        width: 70%;
+        height: 70%;
+        object-fit: contain;
       }
 
       @keyframes fadeInUp {
@@ -671,6 +752,11 @@
           padding: 0 1.5rem;
           grid-template-columns: repeat(2, 1fr);
         }
+        .quick-strip > *:last-child {
+          grid-column: span 2;
+          width: calc(50% - 9px);
+          justify-self: center;
+        }
         nav ul {
           gap: 1rem;
         }
@@ -686,6 +772,9 @@
         .contact-info,
         .contact-form {
           padding: 30px 24px;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
         }
         .gold-line {
           margin: 0 1.5rem;
@@ -802,13 +891,43 @@
           width: 0%;
         }
       }
-          @media (max-width: 768px) {
-        .nav-logo { height: 65px !important; margin-top: 0 !important; }
+      @media (max-width: 768px) {
+        footer {
+          padding: 40px 2rem 24px !important;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr !important;
+          gap: 32px !important;
+        }
+        .footer-grid > div:first-child {
+          flex-direction: column !important;
+          align-items: flex-start !important;
+          gap: 1rem !important;
+        }
+        .footer-logo-img {
+          width: 240px;
+          margin-top: -12px;
+          margin-bottom: -62px;
+        }
+        .footer-contact {
+          width: 240px;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+        }
+        .nav-logo {
+          height: 65px !important;
+          margin-top: 0 !important;
+        }
       }
-      a, .nav-logo a, nav ul li a { text-decoration: none !important; }
-</style>
-  
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+      a,
+      .nav-logo a,
+      nav ul li a {
+        text-decoration: none !important;
+      }
+    </style>
   </head>
   <body>
     <div id="toast-container" class="toast-container"></div>
@@ -824,35 +943,126 @@
         <li><a href="contact.html" class="active">CONTACT</a></li>
       </ul>
       <div class="d-flex align-items-center">
-<a class="cart-nav-link" href="cart.html" aria-label="Cart">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-             fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <path d="M16 10a4 4 0 0 1-8 0"/>
-        </svg>
-        <span class="cart-badge" id="cartBadge">0</span>
-      </a>
-          <!-- Mobile Hamburger Button -->
-      <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNav" aria-controls="mobileNav" style="background: none; border: none; color: white; font-size: 1.5rem; margin-left: 15px;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-      </button>
+        <a class="cart-nav-link" href="cart.html" aria-label="Cart">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 0 1-8 0" />
+          </svg>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </a>
+        <!-- Mobile Hamburger Button -->
+        <button
+          class="navbar-toggler d-lg-none"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#mobileNav"
+          aria-controls="mobileNav"
+          style="
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            margin-left: 15px;
+          "
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
       </div>
     </nav>
 
     <!-- Mobile Offcanvas Menu -->
-    <div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="mobileNav" aria-labelledby="mobileNavLabel" style="width: 250px;">
+    <div
+      class="offcanvas offcanvas-end bg-dark text-white"
+      tabindex="-1"
+      id="mobileNav"
+      aria-labelledby="mobileNavLabel"
+      style="width: 250px"
+    >
       <div class="offcanvas-header border-bottom border-secondary">
-        <h5 class="offcanvas-title" style="font-family: var(--font-serif); letter-spacing: 2px;" id="mobileNavLabel">MENU</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <h5
+          class="offcanvas-title"
+          style="font-family: var(--font-serif); letter-spacing: 2px"
+          id="mobileNavLabel"
+        >
+          MENU
+        </h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" style="gap: 1rem; list-style: none; padding: 0;">
-          <li><a href="index.html" class="text-white text-decoration-none d-block py-2" style="font-size: 0.9rem; letter-spacing: 2px;">HOME</a></li>
-          <li><a href="products.html" class="text-white text-decoration-none d-block py-2" style="font-size: 0.9rem; letter-spacing: 2px;">PRODUCTS</a></li>
-          <li><a href="about.html" class="text-white text-decoration-none d-block py-2" style="font-size: 0.9rem; letter-spacing: 2px;">ABOUT</a></li>
-          <li><a href="blog.html" class="text-white text-decoration-none d-block py-2" style="font-size: 0.9rem; letter-spacing: 2px;">BLOG</a></li>
-          <li><a href="contact.html" class="text-white text-decoration-none d-block py-2" style="font-size: 0.9rem; letter-spacing: 2px;">CONTACT</a></li>
+        <ul
+          class="navbar-nav justify-content-end flex-grow-1 pe-3"
+          style="gap: 1rem; list-style: none; padding: 0"
+        >
+          <li>
+            <a
+              href="index.html"
+              class="text-white text-decoration-none d-block py-2"
+              style="font-size: 0.9rem; letter-spacing: 2px"
+              >HOME</a
+            >
+          </li>
+          <li>
+            <a
+              href="products.html"
+              class="text-white text-decoration-none d-block py-2"
+              style="font-size: 0.9rem; letter-spacing: 2px"
+              >PRODUCTS</a
+            >
+          </li>
+          <li>
+            <a
+              href="about.html"
+              class="text-white text-decoration-none d-block py-2"
+              style="font-size: 0.9rem; letter-spacing: 2px"
+              >ABOUT</a
+            >
+          </li>
+          <li>
+            <a
+              href="blog.html"
+              class="text-white text-decoration-none d-block py-2"
+              style="font-size: 0.9rem; letter-spacing: 2px"
+              >BLOG</a
+            >
+          </li>
+          <li>
+            <a
+              href="contact.html"
+              class="text-white text-decoration-none d-block py-2"
+              style="font-size: 0.9rem; letter-spacing: 2px"
+              >CONTACT</a
+            >
+          </li>
         </ul>
       </div>
     </div>
@@ -866,22 +1076,8 @@
       </p>
     </section>
     <div class="quick-strip">
-      <a class="quick-card reveal d1" href="tel:+917669900247">
-        <div class="quick-icon">
-          <svg
-            viewBox="0 0 24 24"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path
-              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
-            />
-          </svg>
-        </div>
-        <span class="quick-label">Call Us</span>
-        <span class="quick-value">+91-76699-00247</span>
-      </a>
-      <a class="quick-card reveal d2" href="mailto:cs@buybuycart.com">
+
+      <a class="quick-card reveal d2" href="mailto:cs@freshauraa.in">
         <div class="quick-icon">
           <svg
             viewBox="0 0 24 24"
@@ -893,7 +1089,7 @@
           </svg>
         </div>
         <span class="quick-label">Email Us</span>
-        <span class="quick-value">cs@buybuycart.com</span>
+        <span class="quick-value">cs@freshauraa.in</span>
       </a>
       <div class="quick-card reveal d3">
         <div class="quick-icon">
@@ -934,24 +1130,7 @@
             enquiries? Send us a message and our team will get back to you soon.
           </p>
 
-          <div class="info-row">
-            <div class="info-icon">
-              <svg
-                viewBox="0 0 24 24"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
-                />
-              </svg>
-            </div>
-            <div class="info-text">
-              <strong>Phone</strong>
-              <a href="tel:+917669900247">+91-76699-00247</a>
-              <small>Mon – Sat, 10am – 7pm IST</small>
-            </div>
-          </div>
+
 
           <div class="info-row">
             <div class="info-icon">
@@ -1057,10 +1236,18 @@
             </div>
             <div class="field">
               <select name="subject" required>
-                <option value="" disabled selected hidden>Enquiry Purpose</option>
-                <option value="General Product Query">General Product Query</option>
-                <option value="Bulk / Corporate Gifting">Bulk / Corporate Gifting</option>
-                <option value="Distributor & Franchise">Distributor & Franchise</option>
+                <option value="" disabled selected hidden>
+                  Enquiry Purpose
+                </option>
+                <option value="General Product Query">
+                  General Product Query
+                </option>
+                <option value="Bulk / Corporate Gifting">
+                  Bulk / Corporate Gifting
+                </option>
+                <option value="Distributor & Franchise">
+                  Distributor & Franchise
+                </option>
               </select>
               <svg
                 viewBox="0 0 24 24"
@@ -1094,20 +1281,63 @@
       </div>
     </main>
 
-    <div class="gold-line"></div>
-
     <footer>
-      <div class="footer-top">
-        <div class="footer-logo-row">
-          <img src="assets/logo5.png" alt="Fresh Auraa logo" />
-          <span class="footer-tag"></span>
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">
+            <img
+              src="assets/logo5.png"
+              alt="Fresh Auraa logo"
+              class="footer-logo-img"
+            />
+          </div>
+          <div class="footer-contact">
+            <p>
+              <span class="contact-icon"
+                >📩</span
+              ><span>cs@buybuycart.com</span>
+            </p>
+          </div>
         </div>
-        <div class="footer-links">
-          <a href="index.html">Home</a>
-          <a href="products.html">Products</a>
-          <a href="about.html">About</a>
-          <a href="blog.html">Blog</a>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <a href="products.html#home-cleaning">Home Cleaning</a>
+          <a href="products.html#household-supplies">Household Supplies</a>
+          <a href="products.html#personal-care">Personal Care</a>
+          <a href="products.html#bogo">BOGO Deals</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About Us</a>
           <a href="contact.html">Contact</a>
+          <a href="blog.html">Blog</a>
+        </div>
+        <div class="footer-col">
+          <h4>Shop On</h4>
+          <a
+            href="https://www.amazon.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Amazon</a
+          >
+          <a
+            href="https://blinkit.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Blinkit</a
+          >
+          <a
+            href="https://www.indiamart.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            >IndiaMart</a
+          >
+          <a
+            href="https://buybuycart.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Buy Buy Cart</a
+          >
         </div>
       </div>
       <div class="footer-bottom">
@@ -1123,7 +1353,7 @@
           /></a>
           <a
             class="social-btn"
-            href="https://x.com/freshauraa"
+            href="https://www.x.com/freshauraa"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="X"
@@ -1131,7 +1361,7 @@
           /></a>
           <a
             class="social-btn"
-            href="https://www.instagram.com/freshauraa.in"
+            href="https://www.instagram.com/freshauraa.in/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
@@ -1268,20 +1498,45 @@
       }
 
       // ── Cart badge ──
-      (function() {
-        var items = JSON.parse(localStorage.getItem('freshAuraCart') || '[]');
-        var n = items.reduce(function(s,i){ return s + i.qty; }, 0);
-        var b = document.getElementById('cartBadge');
-        if (b && n > 0) { b.textContent = n > 99 ? '99+' : n; b.classList.add('has-items'); }
+      (function () {
+        var items = JSON.parse(localStorage.getItem("freshAuraCart") || "[]");
+        var n = items.reduce(function (s, i) {
+          return s + i.qty;
+        }, 0);
+        var b = document.getElementById("cartBadge");
+        if (b && n > 0) {
+          b.textContent = n > 99 ? "99+" : n;
+          b.classList.add("has-items");
+        }
       })();
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-      <!-- WhatsApp Floating Icon -->
-    <a href="https://wa.me/" target="_blank" style="position: fixed; bottom: 30px; right: 30px; z-index: 9999; font-size: 45px; text-decoration: none; line-height: 1; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-      <i class="fa-brands fa-square-whatsapp fa-beat fa-sm fa-width-auto" style="color: #24cc63;"></i>
-    </a>
-</body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- WhatsApp Floating Icon -->
+    <a
+      href="https://wa.me/"
+  <a href="https://wa.me/" target="_blank" style="
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 9999;
+        text-decoration: none;
+        filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+        transition: transform 0.3s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        background-color: #25D366;
+        color: white;
+        border-radius: 50%;
+      " onmouseover="this.style.transform = 'scale(1.1)'" onmouseout="this.style.transform = 'scale(1)'">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="width: 28px; height: 28px;">
+      <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+    </svg>
+  </a>
+  </body>
 </html>
-
-
-

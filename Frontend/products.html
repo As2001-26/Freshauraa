@@ -17,6 +17,12 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
     <style>
       :root {
         --hero-bg: #1a1c17;
@@ -78,7 +84,7 @@
         z-index: 100;
         background: rgba(26, 28, 23, 0.95);
         backdrop-filter: blur(10px);
-        padding: 1.2rem 5rem;
+        padding: 0.2rem 5rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -88,7 +94,7 @@
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
       }
       nav .logo img {
-        height: 60px;
+        height: 80px;
         width: auto;
       }
       nav ul {
@@ -125,11 +131,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 42px; height: 42px;
+        width: 42px;
+        height: 42px;
         border-radius: 50%;
         border: 1.5px solid #b8892f;
         color: #d4a84b;
-        background: rgba(184,137,47,0.12);
+        background: rgba(184, 137, 47, 0.12);
         margin-left: 1.5rem;
         position: relative;
         transition: all 0.35s ease;
@@ -137,32 +144,100 @@
         text-decoration: none;
       }
       .cart-nav-link:hover {
-        background: rgba(184,137,47,0.22);
+        background: rgba(184, 137, 47, 0.22);
         transform: scale(1.08);
       }
       .cart-badge {
         position: absolute;
-        top: -6px; right: -6px;
+        top: -6px;
+        right: -6px;
         background: #b8892f;
         color: #fff;
         font-size: 0.55rem;
         font-weight: 700;
-        width: 18px; height: 18px;
+        width: 18px;
+        height: 18px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         opacity: 0;
         transform: scale(0.6);
-        transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         pointer-events: none;
       }
-      .cart-badge.has-items { opacity: 1; transform: scale(1); }
+      .cart-badge.has-items {
+        opacity: 1;
+        transform: scale(1);
+      }
 
       .page-header {
         padding: 40px 5rem 12px;
         text-align: center;
+        position: relative;
       }
+
+      /* ===== BUBBLE FLOAT DECORATION ===== */
+      .bubble-field {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 65px;      /* below the fixed navbar height */
+        bottom: 0;
+        pointer-events: none;
+        z-index: 1;
+        overflow: hidden;
+      }
+      .bubble {
+        position: absolute;
+        bottom: -140px;
+        border-radius: 50%;
+        background:
+          radial-gradient(circle at 26% 22%,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 0.95) 6%,
+            transparent 14%),
+          radial-gradient(circle at 70% 75%,
+            rgba(255, 255, 255, 0.6) 0%,
+            transparent 11%),
+          radial-gradient(circle at 50% 50%,
+            rgba(90, 170, 235, 0.12) 45%,
+            rgba(60, 150, 225, 0.32) 68%,
+            rgba(30, 120, 200, 0.5) 82%,
+            rgba(255, 255, 255, 0.6) 93%,
+            rgba(255, 255, 255, 0.2) 100%);
+        border: 1.5px solid rgba(40, 130, 210, 0.65);
+        box-shadow:
+          inset 0 0 14px rgba(255, 255, 255, 0.4),
+          inset -7px -7px 16px rgba(20, 100, 190, 0.35),
+          0 0 0 1.5px rgba(60, 150, 225, 0.35),
+          0 6px 20px rgba(40, 130, 210, 0.35);
+        animation-name: bubbleRise;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        opacity: 0;
+        z-index: 0;
+      }
+      @keyframes bubbleRise {
+        0%   { transform: translateY(0) translateX(0) scale(0.8); opacity: 0; }
+        8%   { opacity: 1; }
+        55%  { transform: translateY(-480px) translateX(30px) scale(1.12); opacity: 0.95; }
+        92%  { opacity: 0.5; }
+        100% { transform: translateY(-980px) translateX(-22px) scale(1); opacity: 0; }
+      }
+      .bubble.b1  { left: 3%;  width: 36px; height: 36px; animation-duration: 16s;   animation-delay: 0s; }
+      .bubble.b2  { left: 13%; width: 22px; height: 22px; animation-duration: 13s;   animation-delay: 1.4s; }
+      .bubble.b3  { left: 23%; width: 46px; height: 46px; animation-duration: 19s;   animation-delay: 0.6s; }
+      .bubble.b4  { left: 35%; width: 26px; height: 26px; animation-duration: 14s;   animation-delay: 2.6s; }
+      .bubble.b5  { left: 47%; width: 38px; height: 38px; animation-duration: 17s;   animation-delay: 1s; }
+      .bubble.b6  { left: 57%; width: 24px; height: 24px; animation-duration: 15s;   animation-delay: 3.2s; }
+      .bubble.b7  { left: 67%; width: 40px; height: 40px; animation-duration: 20s;   animation-delay: 0.2s; }
+      .bubble.b8  { left: 77%; width: 30px; height: 30px; animation-duration: 13.5s; animation-delay: 2s; }
+      .bubble.b9  { left: 87%; width: 22px; height: 22px; animation-duration: 16.5s; animation-delay: 1.8s; }
+      .bubble.b10 { left: 93%; width: 32px; height: 32px; animation-duration: 15.5s; animation-delay: 0.9s; }
+      .bubble.b11 { left: 8%;  width: 18px; height: 18px; animation-duration: 12s;   animation-delay: 4s; }
+      .bubble.b12 { left: 41%; width: 16px; height: 16px; animation-duration: 11.5s; animation-delay: 3.6s; }
+      .page-header > *:not(.bubble-field) { position: relative; z-index: 1; }
       .sec-eyebrow {
         display: inline-flex;
         align-items: center;
@@ -254,6 +329,8 @@
           box-shadow var(--trans),
           opacity 0.3s ease;
         cursor: pointer;
+        position: relative;
+        z-index: 2;
       }
       .prod-card.hidden {
         display: none;
@@ -378,6 +455,8 @@
         background: var(--footer-bg);
         border-top: 1px solid rgba(229, 217, 197, 0.1);
         padding: 64px 5rem 28px;
+        position: relative;
+        z-index: 10;
       }
       .footer-grid {
         display: grid;
@@ -387,7 +466,8 @@
       }
       .footer-grid > div:first-child {
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        align-items: flex-start;
         gap: 1.5rem;
       }
       .footer-logo {
@@ -402,10 +482,24 @@
       .footer-logo span {
         color: #c9a96e;
       }
+      .footer-logo-img {
+        width: 340px;
+        height: auto;
+        display: block;
+        object-fit: contain;
+        margin-top: -18px;
+        margin-bottom: -88px;
+      }
+      .footer-contact {
+        width: 340px;
+        display: flex;
+        justify-content: center;
+        margin-top: 0;
+      }
       .footer-contact p {
         font-size: 0.75rem;
         color: rgba(229, 217, 197, 0.5);
-        margin-bottom: 7px;
+        margin-bottom: 0;
         display: flex;
         align-items: center;
         gap: 8px;
@@ -449,10 +543,10 @@
       }
       .footer-copy {
         font-size: 0.68rem;
-        color: rgba(229, 217, 217, 0.3);
+        color: rgba(229, 217, 197, 0.3);
         letter-spacing: 0.5px;
-        font-weight: 600;
       }
+
       .social-row {
         display: flex;
         gap: 10px;
@@ -486,7 +580,7 @@
 
       @media (max-width: 768px) {
         nav {
-          padding: 1rem 2rem;
+          padding: 0.2rem 2rem;
         }
         nav ul {
           gap: 1.5rem;
@@ -510,24 +604,67 @@
           padding-right: 1.5rem;
         }
       }
-          @media (max-width: 768px) {
-        footer { padding: 40px 2rem 24px !important; }
-        .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-        .footer-grid > div:first-child { flex-direction: column !important; align-items: flex-start !important; gap: 1rem !important; }
+      @media (max-width: 768px) {
+        footer {
+          padding: 40px 2rem 24px !important;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr !important;
+          gap: 32px !important;
+        }
+        .footer-grid > div:first-child {
+          flex-direction: column !important;
+          align-items: flex-start !important;
+          gap: 1rem !important;
+        }
+        .footer-logo-img {
+          width: 240px;
+          margin-top: -12px;
+          margin-bottom: -62px;
+        }
+        .footer-contact {
+          width: 240px;
+        }
       }
       @media (max-width: 576px) {
-        .prod-grid { grid-template-columns: 1fr !important; }
-        nav ul { flex-wrap: wrap; justify-content: center; gap: 0.8rem; }
+        .prod-grid {
+          grid-template-columns: 1fr !important;
+        }
+        nav ul {
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 0.8rem;
+        }
       }
       @media (max-width: 768px) {
-        .nav-logo { height: 65px !important; margin-top: 0 !important; }
+        .nav-logo {
+          height: 65px !important;
+          margin-top: 0 !important;
+        }
       }
-      a, .nav-logo a, nav ul li a { text-decoration: none !important; }
-</style>
-  
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+      a,
+      .nav-logo a,
+      nav ul li a {
+        text-decoration: none !important;
+      }
+    </style>
   </head>
   <body>
+    <!-- Floating Bubbles - full page background -->
+    <div class="bubble-field" aria-hidden="true">
+      <span class="bubble b1"></span>
+      <span class="bubble b2"></span>
+      <span class="bubble b3"></span>
+      <span class="bubble b4"></span>
+      <span class="bubble b5"></span>
+      <span class="bubble b6"></span>
+      <span class="bubble b7"></span>
+      <span class="bubble b8"></span>
+      <span class="bubble b9"></span>
+      <span class="bubble b10"></span>
+      <span class="bubble b11"></span>
+      <span class="bubble b12"></span>
+    </div>
     <nav id="site-nav">
       <div class="logo">
         <img src="assets/logo5.png" alt="Fresh Auraa logo" />
@@ -540,35 +677,126 @@
         <li><a href="contact.html">CONTACT</a></li>
       </ul>
       <div class="d-flex align-items-center">
-<a class="cart-nav-link" href="cart.html" aria-label="Cart">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-             fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <path d="M16 10a4 4 0 0 1-8 0"/>
-        </svg>
-        <span class="cart-badge" id="cartBadge">0</span>
-      </a>
-          <!-- Mobile Hamburger Button -->
-      <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNav" aria-controls="mobileNav" style="background: none; border: none; color: white; font-size: 1.5rem; margin-left: 15px;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-      </button>
+        <a class="cart-nav-link" href="cart.html" aria-label="Cart">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 0 1-8 0" />
+          </svg>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </a>
+        <!-- Mobile Hamburger Button -->
+        <button
+          class="navbar-toggler d-lg-none"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#mobileNav"
+          aria-controls="mobileNav"
+          style="
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            margin-left: 15px;
+          "
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
       </div>
     </nav>
 
     <!-- Mobile Offcanvas Menu -->
-    <div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="mobileNav" aria-labelledby="mobileNavLabel" style="width: 250px;">
+    <div
+      class="offcanvas offcanvas-end bg-dark text-white"
+      tabindex="-1"
+      id="mobileNav"
+      aria-labelledby="mobileNavLabel"
+      style="width: 250px"
+    >
       <div class="offcanvas-header border-bottom border-secondary">
-        <h5 class="offcanvas-title" style="font-family: var(--font-serif); letter-spacing: 2px;" id="mobileNavLabel">MENU</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <h5
+          class="offcanvas-title"
+          style="font-family: var(--font-serif); letter-spacing: 2px"
+          id="mobileNavLabel"
+        >
+          MENU
+        </h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" style="gap: 1rem; list-style: none; padding: 0;">
-          <li><a href="index.html" class="text-white text-decoration-none d-block py-2" style="font-size: 0.9rem; letter-spacing: 2px;">HOME</a></li>
-          <li><a href="products.html" class="text-white text-decoration-none d-block py-2" style="font-size: 0.9rem; letter-spacing: 2px;">PRODUCTS</a></li>
-          <li><a href="about.html" class="text-white text-decoration-none d-block py-2" style="font-size: 0.9rem; letter-spacing: 2px;">ABOUT</a></li>
-          <li><a href="blog.html" class="text-white text-decoration-none d-block py-2" style="font-size: 0.9rem; letter-spacing: 2px;">BLOG</a></li>
-          <li><a href="contact.html" class="text-white text-decoration-none d-block py-2" style="font-size: 0.9rem; letter-spacing: 2px;">CONTACT</a></li>
+        <ul
+          class="navbar-nav justify-content-end flex-grow-1 pe-3"
+          style="gap: 1rem; list-style: none; padding: 0"
+        >
+          <li>
+            <a
+              href="index.html"
+              class="text-white text-decoration-none d-block py-2"
+              style="font-size: 0.9rem; letter-spacing: 2px"
+              >HOME</a
+            >
+          </li>
+          <li>
+            <a
+              href="products.html"
+              class="text-white text-decoration-none d-block py-2"
+              style="font-size: 0.9rem; letter-spacing: 2px"
+              >PRODUCTS</a
+            >
+          </li>
+          <li>
+            <a
+              href="about.html"
+              class="text-white text-decoration-none d-block py-2"
+              style="font-size: 0.9rem; letter-spacing: 2px"
+              >ABOUT</a
+            >
+          </li>
+          <li>
+            <a
+              href="blog.html"
+              class="text-white text-decoration-none d-block py-2"
+              style="font-size: 0.9rem; letter-spacing: 2px"
+              >BLOG</a
+            >
+          </li>
+          <li>
+            <a
+              href="contact.html"
+              class="text-white text-decoration-none d-block py-2"
+              style="font-size: 0.9rem; letter-spacing: 2px"
+              >CONTACT</a
+            >
+          </li>
         </ul>
       </div>
     </div>
@@ -811,19 +1039,18 @@
           </div>
           <div class="footer-contact">
             <p>
-              <span class="contact-icon">☎</span><span>+91-76699-00247</span>
-            </p>
-            <p>
-              <span class="contact-icon">✉</span><span>cs@buybuycart.com</span>
-            </p>
+              <span class="contact-icon"
+                >📩</span
+              ><span>cs@freshauraa.in
+              </span>
           </div>
         </div>
         <div class="footer-col">
           <h4>Shop</h4>
-          <a href="#home-cleaning">Home Cleaning</a>
-          <a href="#household-supplies">Household Supplies</a>
-          <a href="#personal-care">Personal Care</a>
-          <a href="#bogo">BOGO Deals</a>
+          <a href="products.html#home-cleaning">Home Cleaning</a>
+          <a href="products.html#household-supplies">Household Supplies</a>
+          <a href="products.html#personal-care">Personal Care</a>
+          <a href="products.html#bogo">BOGO Deals</a>
         </div>
         <div class="footer-col">
           <h4>Company</h4>
@@ -1010,128 +1237,158 @@
       // ══════════════════════════════════════════════
 
       function getCart() {
-        return JSON.parse(localStorage.getItem('freshAuraCart') || '[]');
+        return JSON.parse(localStorage.getItem("freshAuraCart") || "[]");
       }
       function saveCart(cart) {
-        localStorage.setItem('freshAuraCart', JSON.stringify(cart));
+        localStorage.setItem("freshAuraCart", JSON.stringify(cart));
         updateBadge(cart);
       }
       function updateBadge(cart) {
         const n = cart.reduce((s, i) => s + i.qty, 0);
-        const b = document.getElementById('cartBadge');
+        const b = document.getElementById("cartBadge");
         if (!b) return;
-        b.textContent = n > 99 ? '99+' : n;
-        b.classList.toggle('has-items', n > 0);
+        b.textContent = n > 99 ? "99+" : n;
+        b.classList.toggle("has-items", n > 0);
       }
 
       function slugId(name) {
-        return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+        return name
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/(^-|-$)/g, "");
       }
 
       function showToast(msg) {
-        let t = document.getElementById('_cartToast');
+        let t = document.getElementById("_cartToast");
         if (!t) {
-          t = document.createElement('div');
-          t.id = '_cartToast';
-          t.style.cssText = 'position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:#1e211a;color:#e5d9c5;padding:13px 26px;border-radius:10px;font-family:Montserrat,sans-serif;font-size:0.74rem;letter-spacing:1.5px;border:1px solid rgba(184,137,47,0.4);box-shadow:0 14px 40px rgba(0,0,0,0.35);z-index:9999;opacity:0;transition:all 0.35s ease;white-space:nowrap;pointer-events:none;';
+          t = document.createElement("div");
+          t.id = "_cartToast";
+          t.style.cssText =
+            "position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:#1e211a;color:#e5d9c5;padding:13px 26px;border-radius:10px;font-family:Montserrat,sans-serif;font-size:0.74rem;letter-spacing:1.5px;border:1px solid rgba(184,137,47,0.4);box-shadow:0 14px 40px rgba(0,0,0,0.35);z-index:9999;opacity:0;transition:all 0.35s ease;white-space:nowrap;pointer-events:none;";
           document.body.appendChild(t);
         }
         t.textContent = msg;
-        t.style.opacity = '1';
-        t.style.transform = 'translateX(-50%) translateY(0)';
+        t.style.opacity = "1";
+        t.style.transform = "translateX(-50%) translateY(0)";
         clearTimeout(t._to);
         t._to = setTimeout(() => {
-          t.style.opacity = '0';
-          t.style.transform = 'translateX(-50%) translateY(20px)';
+          t.style.opacity = "0";
+          t.style.transform = "translateX(-50%) translateY(20px)";
         }, 2200);
       }
 
       // Event delegation — handles both static & API-loaded cards
-      document.getElementById('prod-grid').addEventListener('click', function(e) {
-        const btn = e.target.closest('.qty-btn');
-        if (!btn) return;
+      document
+        .getElementById("prod-grid")
+        .addEventListener("click", function (e) {
+          const btn = e.target.closest(".qty-btn");
+          if (!btn) return;
 
-        const card = btn.closest('.prod-card');
-        if (!card) return;
+          const card = btn.closest(".prod-card");
+          if (!card) return;
 
-        const qtySpan = card.querySelector('.qty-value');
-        const nameEl  = card.querySelector('.prod-name');
-        const priceEl = card.querySelector('.prod-price');
-        const catEl   = card.querySelector('.prod-cat');
-        const imgEl   = card.querySelector('.prod-img img');
+          const qtySpan = card.querySelector(".qty-value");
+          const nameEl = card.querySelector(".prod-name");
+          const priceEl = card.querySelector(".prod-price");
+          const catEl = card.querySelector(".prod-cat");
+          const imgEl = card.querySelector(".prod-img img");
 
-        if (!qtySpan || !nameEl || !priceEl) return;
+          if (!qtySpan || !nameEl || !priceEl) return;
 
-        let qty   = parseInt(qtySpan.textContent) || 0;
-        const name     = nameEl.textContent.trim();
-        const priceRaw = priceEl.textContent.replace(/[₹,]/g, '').trim();
-        const price    = parseInt(priceRaw) || 0;
-        const category = catEl ? catEl.textContent.trim() : 'Home Care';
-        const image    = imgEl ? imgEl.src : '';
-        const id       = slugId(name);
+          let qty = parseInt(qtySpan.textContent) || 0;
+          const name = nameEl.textContent.trim();
+          const priceRaw = priceEl.textContent.replace(/[₹,]/g, "").trim();
+          const price = parseInt(priceRaw) || 0;
+          const category = catEl ? catEl.textContent.trim() : "Home Care";
+          const image = imgEl ? imgEl.src : "";
+          const id = slugId(name);
 
-        const isPlus  = btn.classList.contains('qty-plus');
-        const isMinus = btn.classList.contains('qty-minus');
+          const isPlus = btn.classList.contains("qty-plus");
+          const isMinus = btn.classList.contains("qty-minus");
 
-        if (isPlus) {
-          qty++;
-          qtySpan.textContent = qty;
-          // add/update in cart
-          const cart = getCart();
-          const existing = cart.find(i => i.id === id);
-          if (existing) {
-            existing.qty = qty;
-          } else {
-            cart.push({ id, name, price, category, image, qty });
-          }
-          saveCart(cart);
-          showToast(qty === 1 ? `✓  ${name} added to cart` : `✓  Qty updated to ${qty}`);
-        }
-
-        if (isMinus && qty > 0) {
-          qty--;
-          qtySpan.textContent = qty;
-          const cart = getCart();
-          if (qty === 0) {
-            const newCart = cart.filter(i => i.id !== id);
-            saveCart(newCart);
-            showToast(`Removed from cart`);
-          } else {
-            const existing = cart.find(i => i.id === id);
-            if (existing) existing.qty = qty;
+          if (isPlus) {
+            qty++;
+            qtySpan.textContent = qty;
+            // add/update in cart
+            const cart = getCart();
+            const existing = cart.find((i) => i.id === id);
+            if (existing) {
+              existing.qty = qty;
+            } else {
+              cart.push({ id, name, price, category, image, qty });
+            }
             saveCart(cart);
+            showToast(
+              qty === 1
+                ? `✓  ${name} added to cart`
+                : `✓  Qty updated to ${qty}`,
+            );
           }
-        }
-      });
+
+          if (isMinus && qty > 0) {
+            qty--;
+            qtySpan.textContent = qty;
+            const cart = getCart();
+            if (qty === 0) {
+              const newCart = cart.filter((i) => i.id !== id);
+              saveCart(newCart);
+              showToast(`Removed from cart`);
+            } else {
+              const existing = cart.find((i) => i.id === id);
+              if (existing) existing.qty = qty;
+              saveCart(cart);
+            }
+          }
+        });
 
       // On page load — restore qty display from cart
       function restoreQtyFromCart() {
         const cart = getCart();
         updateBadge(cart);
-        document.querySelectorAll('.prod-card').forEach(card => {
-          const nameEl = card.querySelector('.prod-name');
-          const qtySpan = card.querySelector('.qty-value');
+        document.querySelectorAll(".prod-card").forEach((card) => {
+          const nameEl = card.querySelector(".prod-name");
+          const qtySpan = card.querySelector(".qty-value");
           if (!nameEl || !qtySpan) return;
           const id = slugId(nameEl.textContent.trim());
-          const item = cart.find(i => i.id === id);
+          const item = cart.find((i) => i.id === id);
           if (item) qtySpan.textContent = item.qty;
         });
       }
 
       // Run after DOM + API products loaded
       const _origDOMReady = window.onDOMContentLoaded;
-      document.addEventListener('DOMContentLoaded', () => {
+      document.addEventListener("DOMContentLoaded", () => {
         setTimeout(restoreQtyFromCart, 600); // slight delay for API cards
       });
       restoreQtyFromCart(); // for static HTML cards
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-      <!-- WhatsApp Floating Icon -->
-    <a href="https://wa.me/" target="_blank" style="position: fixed; bottom: 30px; right: 30px; z-index: 9999; font-size: 45px; text-decoration: none; line-height: 1; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-      <i class="fa-brands fa-square-whatsapp fa-beat fa-sm fa-width-auto" style="color: #24cc63;"></i>
-    </a>
-</body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- WhatsApp Floating Icon -->
+    <a
+      href="https://wa.me/"
+  <a href="https://wa.me/" target="_blank" style="
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 9999;
+        text-decoration: none;
+        filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+        transition: transform 0.3s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        background-color: #25D366;
+        color: white;
+        border-radius: 50%;
+      " onmouseover="this.style.transform = 'scale(1.1)'" onmouseout="this.style.transform = 'scale(1)'">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="width: 28px; height: 28px;">
+      <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+    </svg>
+  </a>
+  </body>
 </html>
-
-
-

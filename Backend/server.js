@@ -12,8 +12,20 @@ const aboutRoutes = require("./routes/aboutRoutes");
 const blogRoutes = require("./routes/blogRoutes");
 const app = express();
 
+
+const allowedOrigins = [
+  "http://localhost:5501",
+  "http://127.0.0.1:5501",
+  "https://freshauraa.vercel.app"
+];
+
+const corsOptions = {
+  origin: allowedOrigins,
+  credentials: true
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(express.static(path.join(__dirname, "Frontend")));
@@ -52,3 +64,4 @@ app.get("/archita", (req, res) => {
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
 });
+
