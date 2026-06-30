@@ -2582,6 +2582,41 @@
       showToast("Product deleted", "success");
     }
 
+    // Bind Manage Categories Button
+    document.getElementById("manageCatsBtn").addEventListener("click", () => {
+      openModal("catModal");
+      renderCatList();
+    });
+
+    // Render Category List inside Modal
+    function renderCatList() {
+      const container = document.getElementById("cat-list-container");
+      if (!container) return;
+
+      if (!state.categories || state.categories.length === 0) {
+        container.innerHTML = `<div class="empty-state">No categories found</div>`;
+        return;
+      }
+
+      container.innerHTML = state.categories
+        .map((c) => {
+          const count = state.products ? state.products.filter((p) => p.category === c).length : 0;
+          return `
+            <div class="cat-row">
+              <div>
+                <span class="cat-row-name">${c}</span>
+                <span class="cat-row-count">(${count} products)</span>
+              </div>
+              <div class="cat-actions">
+                <button class="btn btn-sm btn-outline" onclick="openEditCat('${c}')">Edit</button>
+                <button class="btn btn-sm btn-danger" style="background:#fee2e2;color:#ef4444;border-color:#fca5a5" onclick="deleteCat('${c}')">Delete</button>
+              </div>
+            </div>
+          `;
+        })
+        .join("");
+    }
+
     document.getElementById("addCatBtn").addEventListener("click", () => {
       const val = document.getElementById("newCatInput").value.trim();
       if (!val) {
@@ -2628,6 +2663,7 @@
         saveState();
         closeModal("editCatModal");
         renderCatList();
+        renderProductsTable();
         showToast("Category updated", "success");
       });
 
@@ -2649,6 +2685,7 @@
       state.categories = state.categories.filter((c) => c !== name);
       saveState();
       renderCatList();
+      renderProductsTable();
       showToast("Category deleted", "success");
     }
 

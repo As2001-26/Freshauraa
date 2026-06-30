@@ -21,7 +21,6 @@ const productSchema = new mongoose.Schema({
   category: {
     type: String,
     required: true,
-    enum: ["Home Cleaning", "Household Supplies", "Personal Care", "Uncategorized"],
     default: "Uncategorized"
   },
   bogo: {
