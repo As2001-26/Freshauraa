@@ -1,1159 +1,1204 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Products - Fresh Auraa</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Montserrat:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-      integrity="sha512-LrQK4Xf6zB7yA0kO7YqCk7fH/L8j3ZDv5gq8rXw5bA7g5Z1YFf+Z6s2Z2gR7W5N3+Qb9jFZ6BB7k7BxzlM7y0A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
-    <style>
-      :root {
-        --hero-bg: #1a1c17;
-        --footer-bg: #0f1109;
-        --page-bg: #f2f2f0;
-        --page-alt: #ebebea;
-        --page-card: #ffffff;
-        --page-lift: #f7f7f6;
-        --text-dark: #1e211a;
-        --text-mid: #3a3d36;
-        --text-soft: #6b6e65;
-        --accent: #b8892f;
-        --accent-dk: #8a6520;
-        --accent-lt: #d4a84b;
-        --btn-bg: #d1bfae;
-        --btn-text: #21241d;
-        --text-gold: #e5d9c5;
-        --text-white: #ffffff;
-        --border: rgba(180, 160, 110, 0.25);
-        --border-lt: rgba(180, 160, 110, 0.12);
-        --border-dark: rgba(229, 217, 197, 0.15);
-        --font-serif: "Cinzel", serif;
-        --font-sans: "Montserrat", sans-serif;
-        --radius: 4px;
-        --radius-lg: 10px;
-        --trans: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      }
-      *,
-      *::before,
-      *::after {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        font-family: var(--font-sans);
-        background-color: var(--page-bg);
-        color: var(--text-dark);
-        overflow-x: hidden;
-        padding-top: 80px;
-      }
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-      img {
-        display: block;
-        max-width: 100%;
-      }
 
-      nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 100;
-        background: rgba(26, 28, 23, 0.95);
-        backdrop-filter: blur(10px);
-        padding: 0.2rem 5rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-bottom: 1px solid rgba(229, 217, 197, 0.1);
-      }
-      nav.scrolled {
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-      }
-      nav .logo img {
-        height: 80px;
-        width: auto;
-      }
-      nav ul {
-        display: flex;
-        list-style: none;
-        gap: 3.5rem;
-      }
-      nav ul li a {
-        font-size: 0.8rem;
-        font-weight: 500;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: var(--text-white);
-        position: relative;
-        padding-bottom: 5px;
-        transition: color var(--trans);
-      }
-      nav ul li a::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 1.5px;
-        background: var(--text-white);
-        transition: width 0.3s ease;
-      }
-      nav ul li a:hover::after,
-      nav ul li a.active::after {
-        width: 100%;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products - Fresh Auraa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Montserrat:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-LrQK4Xf6zB7yA0kO7YqCk7fH/L8j3ZDv5gq8rXw5bA7g5Z1YFf+Z6s2Z2gR7W5N3+Qb9jFZ6BB7k7BxzlM7y0A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+  <style>
+    :root {
+      --hero-bg: #1a1c17;
+      --footer-bg: #0f1109;
+      --page-bg: #f2f2f0;
+      --page-alt: #ebebea;
+      --page-card: #ffffff;
+      --page-lift: #f7f7f6;
+      --text-dark: #1e211a;
+      --text-mid: #3a3d36;
+      --text-soft: #6b6e65;
+      --accent: #b8892f;
+      --accent-dk: #8a6520;
+      --accent-lt: #d4a84b;
+      --btn-bg: #d1bfae;
+      --btn-text: #21241d;
+      --text-gold: #e5d9c5;
+      --text-white: #ffffff;
+      --border: rgba(180, 160, 110, 0.25);
+      --border-lt: rgba(180, 160, 110, 0.12);
+      --border-dark: rgba(229, 217, 197, 0.15);
+      --font-serif: "Cinzel", serif;
+      --font-sans: "Montserrat", sans-serif;
+      --radius: 4px;
+      --radius-lg: 10px;
+      --trans: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
 
-      .cart-nav-link {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 42px;
-        height: 42px;
-        border-radius: 50%;
-        border: 1.5px solid #b8892f;
-        color: #d4a84b;
-        background: rgba(184, 137, 47, 0.12);
-        margin-left: 1.5rem;
-        position: relative;
-        transition: all 0.35s ease;
-        flex-shrink: 0;
-        text-decoration: none;
-      }
-      .cart-nav-link:hover {
-        background: rgba(184, 137, 47, 0.22);
-        transform: scale(1.08);
-      }
-      .cart-badge {
-        position: absolute;
-        top: -6px;
-        right: -6px;
-        background: #b8892f;
-        color: #fff;
-        font-size: 0.55rem;
-        font-weight: 700;
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--page-bg);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      padding-top: 80px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(26, 28, 23, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 0.2rem 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(229, 217, 197, 0.1);
+    }
+
+    nav.scrolled {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    nav .logo img {
+      height: 80px;
+      width: auto;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 3.5rem;
+    }
+
+    nav ul li a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-white);
+      position: relative;
+      padding-bottom: 5px;
+      transition: color var(--trans);
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--text-white);
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover::after,
+    nav ul li a.active::after {
+      width: 100%;
+    }
+
+    .cart-nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1.5px solid #b8892f;
+      color: #d4a84b;
+      background: rgba(184, 137, 47, 0.12);
+      margin-left: 1.5rem;
+      position: relative;
+      transition: all 0.35s ease;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    .cart-nav-link:hover {
+      background: rgba(184, 137, 47, 0.22);
+      transform: scale(1.08);
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: #b8892f;
+      color: #fff;
+      font-size: 0.55rem;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(0.6);
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      pointer-events: none;
+    }
+
+    .cart-badge.has-items {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .page-header {
+      padding: 40px 5rem 12px;
+      text-align: center;
+      position: relative;
+    }
+
+    /* ===== BUBBLE FLOAT DECORATION ===== */
+    .bubble-field {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 65px;
+      /* below the fixed navbar height */
+      bottom: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -140px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 26% 22%,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(255, 255, 255, 0.95) 6%,
+          transparent 14%),
+        radial-gradient(circle at 70% 75%,
+          rgba(255, 255, 255, 0.6) 0%,
+          transparent 11%),
+        radial-gradient(circle at 50% 50%,
+          rgba(90, 170, 235, 0.12) 45%,
+          rgba(60, 150, 225, 0.32) 68%,
+          rgba(30, 120, 200, 0.5) 82%,
+          rgba(255, 255, 255, 0.6) 93%,
+          rgba(255, 255, 255, 0.2) 100%);
+      border: 1.5px solid rgba(40, 130, 210, 0.65);
+      box-shadow:
+        inset 0 0 14px rgba(255, 255, 255, 0.4),
+        inset -7px -7px 16px rgba(20, 100, 190, 0.35),
+        0 0 0 1.5px rgba(60, 150, 225, 0.35),
+        0 6px 20px rgba(40, 130, 210, 0.35);
+      animation-name: bubbleRise;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      opacity: 0;
+      z-index: 0;
+    }
+
+    @keyframes bubbleRise {
+      0% {
+        transform: translateY(0) translateX(0) scale(0.8);
         opacity: 0;
-        transform: scale(0.6);
-        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        pointer-events: none;
       }
-      .cart-badge.has-items {
+
+      8% {
         opacity: 1;
-        transform: scale(1);
       }
 
-      .page-header {
-        padding: 40px 5rem 12px;
-        text-align: center;
-        position: relative;
+      55% {
+        transform: translateY(-480px) translateX(30px) scale(1.12);
+        opacity: 0.95;
       }
 
-      /* ===== BUBBLE FLOAT DECORATION ===== */
-      .bubble-field {
-        position: fixed;
-        left: 0;
-        right: 0;
-        top: 65px;      /* below the fixed navbar height */
-        bottom: 0;
-        pointer-events: none;
-        z-index: 1;
-        overflow: hidden;
+      92% {
+        opacity: 0.5;
       }
-      .bubble {
-        position: absolute;
-        bottom: -140px;
-        border-radius: 50%;
-        background:
-          radial-gradient(circle at 26% 22%,
-            rgba(255, 255, 255, 1) 0%,
-            rgba(255, 255, 255, 0.95) 6%,
-            transparent 14%),
-          radial-gradient(circle at 70% 75%,
-            rgba(255, 255, 255, 0.6) 0%,
-            transparent 11%),
-          radial-gradient(circle at 50% 50%,
-            rgba(90, 170, 235, 0.12) 45%,
-            rgba(60, 150, 225, 0.32) 68%,
-            rgba(30, 120, 200, 0.5) 82%,
-            rgba(255, 255, 255, 0.6) 93%,
-            rgba(255, 255, 255, 0.2) 100%);
-        border: 1.5px solid rgba(40, 130, 210, 0.65);
-        box-shadow:
-          inset 0 0 14px rgba(255, 255, 255, 0.4),
-          inset -7px -7px 16px rgba(20, 100, 190, 0.35),
-          0 0 0 1.5px rgba(60, 150, 225, 0.35),
-          0 6px 20px rgba(40, 130, 210, 0.35);
-        animation-name: bubbleRise;
-        animation-timing-function: ease-in-out;
-        animation-iteration-count: infinite;
+
+      100% {
+        transform: translateY(-980px) translateX(-22px) scale(1);
         opacity: 0;
-        z-index: 0;
       }
-      @keyframes bubbleRise {
-        0%   { transform: translateY(0) translateX(0) scale(0.8); opacity: 0; }
-        8%   { opacity: 1; }
-        55%  { transform: translateY(-480px) translateX(30px) scale(1.12); opacity: 0.95; }
-        92%  { opacity: 0.5; }
-        100% { transform: translateY(-980px) translateX(-22px) scale(1); opacity: 0; }
-      }
-      .bubble.b1  { left: 3%;  width: 36px; height: 36px; animation-duration: 16s;   animation-delay: 0s; }
-      .bubble.b2  { left: 13%; width: 22px; height: 22px; animation-duration: 13s;   animation-delay: 1.4s; }
-      .bubble.b3  { left: 23%; width: 46px; height: 46px; animation-duration: 19s;   animation-delay: 0.6s; }
-      .bubble.b4  { left: 35%; width: 26px; height: 26px; animation-duration: 14s;   animation-delay: 2.6s; }
-      .bubble.b5  { left: 47%; width: 38px; height: 38px; animation-duration: 17s;   animation-delay: 1s; }
-      .bubble.b6  { left: 57%; width: 24px; height: 24px; animation-duration: 15s;   animation-delay: 3.2s; }
-      .bubble.b7  { left: 67%; width: 40px; height: 40px; animation-duration: 20s;   animation-delay: 0.2s; }
-      .bubble.b8  { left: 77%; width: 30px; height: 30px; animation-duration: 13.5s; animation-delay: 2s; }
-      .bubble.b9  { left: 87%; width: 22px; height: 22px; animation-duration: 16.5s; animation-delay: 1.8s; }
-      .bubble.b10 { left: 93%; width: 32px; height: 32px; animation-duration: 15.5s; animation-delay: 0.9s; }
-      .bubble.b11 { left: 8%;  width: 18px; height: 18px; animation-duration: 12s;   animation-delay: 4s; }
-      .bubble.b12 { left: 41%; width: 16px; height: 16px; animation-duration: 11.5s; animation-delay: 3.6s; }
-      .page-header > *:not(.bubble-field) { position: relative; z-index: 1; }
-      .sec-eyebrow {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        color: var(--accent);
-        font-size: 0.78rem;
-        letter-spacing: 4px;
-        text-transform: uppercase;
-        margin-bottom: 0.6rem;
-      }
-      .sec-eyebrow::before,
-      .sec-eyebrow::after {
-        content: "";
-        display: block;
-        width: 36px;
-        height: 1px;
-        background: var(--accent);
-        opacity: 0.6;
-      }
-      .sec-h2 {
-        font-family: var(--font-serif);
-        font-size: 3.5rem;
-        font-weight: 400;
-        color: var(--text-dark);
-        text-transform: uppercase;
-        margin-bottom: 0.25rem;
-      }
-      .sec-sub {
-        max-width: 640px;
-        margin: 0 auto 2px;
-        font-size: 0.95rem;
-        color: var(--text-soft);
-        line-height: 1.5;
+    }
+
+    .bubble.b1 {
+      left: 3%;
+      width: 36px;
+      height: 36px;
+      animation-duration: 16s;
+      animation-delay: 0s;
+    }
+
+    .bubble.b2 {
+      left: 13%;
+      width: 22px;
+      height: 22px;
+      animation-duration: 13s;
+      animation-delay: 1.4s;
+    }
+
+    .bubble.b3 {
+      left: 23%;
+      width: 46px;
+      height: 46px;
+      animation-duration: 19s;
+      animation-delay: 0.6s;
+    }
+
+    .bubble.b4 {
+      left: 35%;
+      width: 26px;
+      height: 26px;
+      animation-duration: 14s;
+      animation-delay: 2.6s;
+    }
+
+    .bubble.b5 {
+      left: 47%;
+      width: 38px;
+      height: 38px;
+      animation-duration: 17s;
+      animation-delay: 1s;
+    }
+
+    .bubble.b6 {
+      left: 57%;
+      width: 24px;
+      height: 24px;
+      animation-duration: 15s;
+      animation-delay: 3.2s;
+    }
+
+    .bubble.b7 {
+      left: 67%;
+      width: 40px;
+      height: 40px;
+      animation-duration: 20s;
+      animation-delay: 0.2s;
+    }
+
+    .bubble.b8 {
+      left: 77%;
+      width: 30px;
+      height: 30px;
+      animation-duration: 13.5s;
+      animation-delay: 2s;
+    }
+
+    .bubble.b9 {
+      left: 87%;
+      width: 22px;
+      height: 22px;
+      animation-duration: 16.5s;
+      animation-delay: 1.8s;
+    }
+
+    .bubble.b10 {
+      left: 93%;
+      width: 32px;
+      height: 32px;
+      animation-duration: 15.5s;
+      animation-delay: 0.9s;
+    }
+
+    .bubble.b11 {
+      left: 8%;
+      width: 18px;
+      height: 18px;
+      animation-duration: 12s;
+      animation-delay: 4s;
+    }
+
+    .bubble.b12 {
+      left: 41%;
+      width: 16px;
+      height: 16px;
+      animation-duration: 11.5s;
+      animation-delay: 3.6s;
+    }
+
+    .page-header>*:not(.bubble-field) {
+      position: relative;
+      z-index: 1;
+    }
+
+    .sec-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .sec-eyebrow::before,
+    .sec-eyebrow::after {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.6;
+    }
+
+    .sec-h2 {
+      font-family: var(--font-serif);
+      font-size: 3.5rem;
+      font-weight: 400;
+      color: var(--text-dark);
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+
+    .sec-sub {
+      max-width: 640px;
+      margin: 0 auto 2px;
+      font-size: 0.95rem;
+      color: var(--text-soft);
+      line-height: 1.5;
+    }
+
+    #page-products {
+      background: var(--page-bg);
+      padding: 16px 5rem 40px;
+      margin-top: 10px;
+    }
+
+    .cat-tabs {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cat-tab {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      border: 1px solid #d0cfc8;
+      padding: 9px 22px;
+      border-radius: 20px;
+      background: transparent;
+      cursor: pointer;
+      transition: all var(--trans);
+    }
+
+    .cat-tab.active,
+    .cat-tab:hover {
+      color: var(--text-dark);
+      border-color: var(--accent);
+      background: rgba(184, 137, 47, 0.08);
+    }
+
+    .cat-anchor {
+      display: block;
+      height: 0;
+      overflow: hidden;
+      visibility: hidden;
+    }
+
+    .prod-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .prod-card {
+      background: var(--page-card);
+      border: 1px solid #e0ddd6;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition:
+        border-color var(--trans),
+        transform var(--trans),
+        box-shadow var(--trans),
+        opacity 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+    }
+
+    .prod-card.hidden {
+      display: none;
+    }
+
+    .prod-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.12);
+    }
+
+    .prod-img {
+      background: var(--page-lift);
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .prod-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .prod-card:hover .prod-img img {
+      transform: scale(1.05);
+    }
+
+    .bogo-pill {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 2;
+      font-family: var(--font-sans);
+      font-size: 0.55rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: var(--accent);
+      color: #fff;
+      padding: 4px 9px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+
+    .prod-body {
+      padding: 18px 18px 20px;
+    }
+
+    .prod-cat {
+      font-size: 0.6rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 7px;
+    }
+
+    .prod-name {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 14px;
+      line-height: 1.45;
+    }
+
+    .prod-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .prod-price {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      color: var(--accent);
+      font-weight: 400;
+    }
+
+    .qty-control {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .qty-value {
+      min-width: 18px;
+      text-align: center;
+      color: var(--text-dark);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .qty-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(184, 137, 47, 0.1);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition:
+        background var(--trans),
+        transform var(--trans),
+        color var(--trans);
+    }
+
+    .qty-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: scale(1.08);
+    }
+
+    .qty-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      background: rgba(184, 137, 47, 0.05);
+    }
+
+    .no-products-msg {
+      display: none;
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-soft);
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    footer {
+      background: var(--footer-bg);
+      border-top: 1px solid rgba(229, 217, 197, 0.1);
+      padding: 64px 5rem 28px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-grid>div:first-child {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-gold);
+      margin-bottom: 0;
+    }
+
+    .footer-logo span {
+      color: #c9a96e;
+    }
+
+    .footer-logo-img {
+      width: 340px;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      margin-top: -18px;
+      margin-bottom: -88px;
+    }
+
+    .footer-contact {
+      width: 340px;
+      display: flex;
+      justify-content: center;
+      margin-top: 0;
+    }
+
+    .footer-contact p {
+      font-size: 0.75rem;
+      color: rgba(229, 217, 197, 0.5);
+      margin-bottom: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      font-weight: 600;
+    }
+
+    .contact-icon {
+      width: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #c9a96e;
+      flex: 0 0 18px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-sans);
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #c9a96e;
+      margin-bottom: 18px;
+      opacity: 0.85;
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: 0.78rem;
+      color: rgba(229, 217, 197, 0.5);
+      margin-bottom: 11px;
+      transition: color var(--trans);
+      font-weight: 600;
+    }
+
+    .footer-col a:hover {
+      color: #c9a96e;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      padding-top: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-copy {
+      font-size: 0.68rem;
+      color: rgba(229, 217, 197, 0.3);
+      letter-spacing: 0.5px;
+    }
+
+    .social-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-btn {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: #000;
+      border: 1px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(229, 217, 197, 0.5);
+      font-size: 0.7rem;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      font-weight: 500;
+      transition: all var(--trans);
+    }
+
+    .social-btn:hover {
+      border-color: #c9a96e;
+      color: #c9a96e;
+      transform: scale(1.1);
+    }
+
+    .social-btn img {
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 0.2rem 2rem;
       }
 
-      #page-products {
-        background: var(--page-bg);
-        padding: 16px 5rem 40px;
-        margin-top: 10px;
+      nav ul {
+        gap: 1.5rem;
       }
-      .cat-tabs {
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-        margin-bottom: 12px;
-        flex-wrap: wrap;
-      }
-      .cat-tab {
-        font-family: var(--font-sans);
+
+      nav ul li a {
         font-size: 0.7rem;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: var(--text-soft);
-        border: 1px solid #d0cfc8;
-        padding: 9px 22px;
-        border-radius: 20px;
-        background: transparent;
-        cursor: pointer;
-        transition: all var(--trans);
-      }
-      .cat-tab.active,
-      .cat-tab:hover {
-        color: var(--text-dark);
-        border-color: var(--accent);
-        background: rgba(184, 137, 47, 0.08);
       }
 
-      .cat-anchor {
-        display: block;
-        height: 0;
-        overflow: hidden;
-        visibility: hidden;
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
       }
 
       .prod-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-      }
-      .prod-card {
-        background: var(--page-card);
-        border: 1px solid #e0ddd6;
-        border-radius: var(--radius-lg);
-        overflow: hidden;
-        transition:
-          border-color var(--trans),
-          transform var(--trans),
-          box-shadow var(--trans),
-          opacity 0.3s ease;
-        cursor: pointer;
-        position: relative;
-        z-index: 2;
-      }
-      .prod-card.hidden {
-        display: none;
-      }
-      .prod-card:hover {
-        border-color: var(--accent);
-        transform: translateY(-5px);
-        box-shadow: 0 18px 44px rgba(0, 0, 0, 0.12);
-      }
-      .prod-img {
-        background: var(--page-lift);
-        height: 200px;
-        position: relative;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .prod-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
-      }
-      .prod-card:hover .prod-img img {
-        transform: scale(1.05);
-      }
-      .bogo-pill {
-        position: absolute;
-        top: 12px;
-        left: 12px;
-        z-index: 2;
-        font-family: var(--font-sans);
-        font-size: 0.55rem;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        background: var(--accent);
-        color: #fff;
-        padding: 4px 9px;
-        border-radius: 3px;
-        font-weight: 600;
-      }
-      .prod-body {
-        padding: 18px 18px 20px;
-      }
-      .prod-cat {
-        font-size: 0.6rem;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: var(--text-soft);
-        margin-bottom: 7px;
-      }
-      .prod-name {
-        font-family: var(--font-sans);
-        font-size: 0.82rem;
-        font-weight: 600;
-        color: var(--text-dark);
-        margin-bottom: 14px;
-        line-height: 1.45;
-      }
-      .prod-footer {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .prod-price {
-        font-family: var(--font-serif);
-        font-size: 1.25rem;
-        color: var(--accent);
-        font-weight: 400;
-      }
-      .qty-control {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .qty-value {
-        min-width: 18px;
-        text-align: center;
-        color: var(--text-dark);
-        font-size: 0.82rem;
-        font-weight: 600;
-      }
-      .qty-btn {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        background: rgba(184, 137, 47, 0.1);
-        border: 1px solid var(--border);
-        color: var(--accent);
-        font-size: 18px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition:
-          background var(--trans),
-          transform var(--trans),
-          color var(--trans);
-      }
-      .qty-btn:hover {
-        background: var(--accent);
-        color: #fff;
-        transform: scale(1.08);
-      }
-      .qty-btn:disabled {
-        opacity: 0.35;
-        cursor: not-allowed;
-        background: rgba(184, 137, 47, 0.05);
-      }
-      .no-products-msg {
-        display: none;
-        grid-column: 1 / -1;
-        text-align: center;
-        padding: 60px 20px;
-        color: var(--text-soft);
-        font-size: 0.9rem;
-        letter-spacing: 1px;
+        grid-template-columns: repeat(2, 1fr);
       }
 
+      #page-products {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+
+      .page-header {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
       footer {
-        background: var(--footer-bg);
-        border-top: 1px solid rgba(229, 217, 197, 0.1);
-        padding: 64px 5rem 28px;
-        position: relative;
-        z-index: 10;
+        padding: 40px 2rem 24px !important;
       }
+
       .footer-grid {
-        display: grid;
-        grid-template-columns: 2fr 1fr 1fr 1fr;
-        gap: 48px;
-        margin-bottom: 48px;
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
       }
-      .footer-grid > div:first-child {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1.5rem;
+
+      .footer-grid>div:first-child {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 1rem !important;
       }
-      .footer-logo {
-        font-family: var(--font-serif);
-        font-size: 1.4rem;
-        font-weight: 400;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: var(--text-gold);
-        margin-bottom: 0;
-      }
-      .footer-logo span {
-        color: #c9a96e;
-      }
+
       .footer-logo-img {
-        width: 340px;
-        height: auto;
-        display: block;
-        object-fit: contain;
-        margin-top: -18px;
-        margin-bottom: -88px;
+        width: 240px;
+        margin-top: -12px;
+        margin-bottom: -62px;
       }
+
       .footer-contact {
-        width: 340px;
-        display: flex;
-        justify-content: center;
-        margin-top: 0;
+        width: 240px;
       }
-      .footer-contact p {
-        font-size: 0.75rem;
-        color: rgba(229, 217, 197, 0.5);
-        margin-bottom: 0;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        white-space: nowrap;
-        font-weight: 600;
-      }
-      .contact-icon {
-        width: 18px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        color: #c9a96e;
-        flex: 0 0 18px;
-      }
-      .footer-col h4 {
-        font-family: var(--font-sans);
-        font-size: 0.6rem;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: #c9a96e;
-        margin-bottom: 18px;
-        opacity: 0.85;
-      }
-      .footer-col a {
-        display: block;
-        font-size: 0.78rem;
-        color: rgba(229, 217, 197, 0.5);
-        margin-bottom: 11px;
-        transition: color var(--trans);
-        font-weight: 600;
-      }
-      .footer-col a:hover {
-        color: #c9a96e;
-      }
-      .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.07);
-        padding-top: 22px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .footer-copy {
-        font-size: 0.68rem;
-        color: rgba(229, 217, 197, 0.3);
-        letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 576px) {
+      .prod-grid {
+        grid-template-columns: 1fr !important;
       }
 
-      .social-row {
-        display: flex;
-        gap: 10px;
-      }
-      .social-btn {
-        width: 35px;
-        height: 35px;
-        border-radius: 50%;
-        background: #000;
-        border: 1px solid #000;
-        display: flex;
-        align-items: center;
+      nav ul {
+        flex-wrap: wrap;
         justify-content: center;
-        color: rgba(229, 217, 197, 0.5);
-        font-size: 0.7rem;
-        cursor: pointer;
-        font-family: var(--font-sans);
-        font-weight: 500;
-        transition: all var(--trans);
+        gap: 0.8rem;
       }
-      .social-btn:hover {
-        border-color: #c9a96e;
-        color: #c9a96e;
-        transform: scale(1.1);
-      }
-      .social-btn img {
-        width: 70%;
-        height: 70%;
-        object-fit: contain;
-      }
+    }
 
-      @media (max-width: 768px) {
-        nav {
-          padding: 0.2rem 2rem;
-        }
-        nav ul {
-          gap: 1.5rem;
-        }
-        nav ul li a {
-          font-size: 0.7rem;
-        }
-        .footer-grid {
-          grid-template-columns: 1fr;
-          gap: 32px;
-        }
-        .prod-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        #page-products {
-          padding-left: 1.5rem;
-          padding-right: 1.5rem;
-        }
-        .page-header {
-          padding-left: 1.5rem;
-          padding-right: 1.5rem;
-        }
+    @media (max-width: 768px) {
+      .nav-logo {
+        height: 65px !important;
+        margin-top: 0 !important;
       }
-      @media (max-width: 768px) {
-        footer {
-          padding: 40px 2rem 24px !important;
-        }
-        .footer-grid {
-          grid-template-columns: 1fr !important;
-          gap: 32px !important;
-        }
-        .footer-grid > div:first-child {
-          flex-direction: column !important;
-          align-items: flex-start !important;
-          gap: 1rem !important;
-        }
-        .footer-logo-img {
-          width: 240px;
-          margin-top: -12px;
-          margin-bottom: -62px;
-        }
-        .footer-contact {
-          width: 240px;
-        }
-      }
-      @media (max-width: 576px) {
-        .prod-grid {
-          grid-template-columns: 1fr !important;
-        }
-        nav ul {
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 0.8rem;
-        }
-      }
-      @media (max-width: 768px) {
-        .nav-logo {
-          height: 65px !important;
-          margin-top: 0 !important;
-        }
-      }
-      a,
-      .nav-logo a,
-      nav ul li a {
-        text-decoration: none !important;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Floating Bubbles - full page background -->
-    <div class="bubble-field" aria-hidden="true">
-      <span class="bubble b1"></span>
-      <span class="bubble b2"></span>
-      <span class="bubble b3"></span>
-      <span class="bubble b4"></span>
-      <span class="bubble b5"></span>
-      <span class="bubble b6"></span>
-      <span class="bubble b7"></span>
-      <span class="bubble b8"></span>
-      <span class="bubble b9"></span>
-      <span class="bubble b10"></span>
-      <span class="bubble b11"></span>
-      <span class="bubble b12"></span>
+    }
+
+    a,
+    .nav-logo a,
+    nav ul li a {
+      text-decoration: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Floating Bubbles - full page background -->
+  <div class="bubble-field" aria-hidden="true">
+    <span class="bubble b1"></span>
+    <span class="bubble b2"></span>
+    <span class="bubble b3"></span>
+    <span class="bubble b4"></span>
+    <span class="bubble b5"></span>
+    <span class="bubble b6"></span>
+    <span class="bubble b7"></span>
+    <span class="bubble b8"></span>
+    <span class="bubble b9"></span>
+    <span class="bubble b10"></span>
+    <span class="bubble b11"></span>
+    <span class="bubble b12"></span>
+  </div>
+  <nav id="site-nav">
+    <div class="logo">
+      <img src="assets/logo5.png" alt="Fresh Auraa logo" />
     </div>
-    <nav id="site-nav">
-      <div class="logo">
-        <img src="assets/logo5.png" alt="Fresh Auraa logo" />
-      </div>
-      <ul class="d-none d-lg-flex align-items-center m-0">
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="products.html" class="active">PRODUCTS</a></li>
-        <li><a href="about.html">ABOUT</a></li>
-        <li><a href="blog.html">BLOG</a></li>
-        <li><a href="contact.html">CONTACT</a></li>
-      </ul>
-      <div class="d-flex align-items-center">
-        <a class="cart-nav-link" href="cart.html" aria-label="Cart">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
-            <line x1="3" y1="6" x2="21" y2="6" />
-            <path d="M16 10a4 4 0 0 1-8 0" />
-          </svg>
-          <span class="cart-badge" id="cartBadge">0</span>
-        </a>
-        <!-- Mobile Hamburger Button -->
-        <button
-          class="navbar-toggler d-lg-none"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#mobileNav"
-          aria-controls="mobileNav"
-          style="
+    <ul class="d-none d-lg-flex align-items-center m-0">
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="products.html" class="active">PRODUCTS</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="blog.html">BLOG</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
+    </ul>
+    <div class="d-flex align-items-center">
+      <a class="cart-nav-link" href="cart.html" aria-label="Cart">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <path d="M16 10a4 4 0 0 1-8 0" />
+        </svg>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </a>
+      <!-- Mobile Hamburger Button -->
+      <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNav"
+        aria-controls="mobileNav" style="
             background: none;
             border: none;
             color: white;
             font-size: 1.5rem;
             margin-left: 15px;
-          "
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-    </nav>
+          ">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </nav>
 
-    <!-- Mobile Offcanvas Menu -->
-    <div
-      class="offcanvas offcanvas-end bg-dark text-white"
-      tabindex="-1"
-      id="mobileNav"
-      aria-labelledby="mobileNavLabel"
-      style="width: 250px"
-    >
-      <div class="offcanvas-header border-bottom border-secondary">
-        <h5
-          class="offcanvas-title"
-          style="font-family: var(--font-serif); letter-spacing: 2px"
-          id="mobileNavLabel"
-        >
-          MENU
-        </h5>
-        <button
-          type="button"
-          class="btn-close btn-close-white"
-          data-bs-dismiss="offcanvas"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="offcanvas-body">
-        <ul
-          class="navbar-nav justify-content-end flex-grow-1 pe-3"
-          style="gap: 1rem; list-style: none; padding: 0"
-        >
-          <li>
-            <a
-              href="index.html"
-              class="text-white text-decoration-none d-block py-2"
-              style="font-size: 0.9rem; letter-spacing: 2px"
-              >HOME</a
-            >
-          </li>
-          <li>
-            <a
-              href="products.html"
-              class="text-white text-decoration-none d-block py-2"
-              style="font-size: 0.9rem; letter-spacing: 2px"
-              >PRODUCTS</a
-            >
-          </li>
-          <li>
-            <a
-              href="about.html"
-              class="text-white text-decoration-none d-block py-2"
-              style="font-size: 0.9rem; letter-spacing: 2px"
-              >ABOUT</a
-            >
-          </li>
-          <li>
-            <a
-              href="blog.html"
-              class="text-white text-decoration-none d-block py-2"
-              style="font-size: 0.9rem; letter-spacing: 2px"
-              >BLOG</a
-            >
-          </li>
-          <li>
-            <a
-              href="contact.html"
-              class="text-white text-decoration-none d-block py-2"
-              style="font-size: 0.9rem; letter-spacing: 2px"
-              >CONTACT</a
-            >
-          </li>
-        </ul>
-      </div>
+  <!-- Mobile Offcanvas Menu -->
+  <div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="mobileNav" aria-labelledby="mobileNavLabel"
+    style="width: 250px">
+    <div class="offcanvas-header border-bottom border-secondary">
+      <h5 class="offcanvas-title" style="font-family: var(--font-serif); letter-spacing: 2px" id="mobileNavLabel">
+        MENU
+      </h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" style="gap: 1rem; list-style: none; padding: 0">
+        <li>
+          <a href="index.html" class="text-white text-decoration-none d-block py-2"
+            style="font-size: 0.9rem; letter-spacing: 2px">HOME</a>
+        </li>
+        <li>
+          <a href="products.html" class="text-white text-decoration-none d-block py-2"
+            style="font-size: 0.9rem; letter-spacing: 2px">PRODUCTS</a>
+        </li>
+        <li>
+          <a href="about.html" class="text-white text-decoration-none d-block py-2"
+            style="font-size: 0.9rem; letter-spacing: 2px">ABOUT</a>
+        </li>
+        <li>
+          <a href="blog.html" class="text-white text-decoration-none d-block py-2"
+            style="font-size: 0.9rem; letter-spacing: 2px">BLOG</a>
+        </li>
+        <li>
+          <a href="contact.html" class="text-white text-decoration-none d-block py-2"
+            style="font-size: 0.9rem; letter-spacing: 2px">CONTACT</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <header class="page-header">
+    <div class="sec-eyebrow">Fresh Auraa</div>
+    <h1 class="sec-h2">Where Quality Always Prevails</h1>
+    <p class="sec-sub">
+      Find all products here — every order includes an exclusive BOGO deal.
+    </p>
+  </header>
+
+  <main id="page-products">
+    <div class="cat-tabs">
+      <button class="cat-tab active" data-filter="All Products">
+        All Products
+      </button>
+      <button class="cat-tab" data-filter="Home Cleaning">
+        Home Cleaning
+      </button>
+      <button class="cat-tab" data-filter="Household Supplies">
+        Household Supplies
+      </button>
+      <button class="cat-tab" data-filter="Personal Care">
+        Personal Care
+      </button>
     </div>
 
-    <header class="page-header">
-      <div class="sec-eyebrow">Fresh Auraa</div>
-      <h1 class="sec-h2">Where Quality Always Prevails</h1>
-      <p class="sec-sub">
-        Find all products here — every order includes an exclusive BOGO deal.
-      </p>
-    </header>
+    <span class="cat-anchor" id="home-cleaning"></span>
+    <span class="cat-anchor" id="household-supplies"></span>
+    <span class="cat-anchor" id="personal-care"></span>
+    <span class="cat-anchor" id="bogo"></span>
 
-    <main id="page-products">
-      <div class="cat-tabs">
-        <button class="cat-tab active" data-filter="All Products">
-          All Products
-        </button>
-        <button class="cat-tab" data-filter="Home Cleaning">
-          Home Cleaning
-        </button>
-        <button class="cat-tab" data-filter="Household Supplies">
-          Household Supplies
-        </button>
-        <button class="cat-tab" data-filter="Personal Care">
-          Personal Care
-        </button>
+    <div class="prod-grid" id="prod-grid">
+      <div class="prod-card" data-category="Home Cleaning">
+        <div class="prod-img">
+          <span class="bogo-pill">BOGO</span><img src="assets/fresh.png" alt="Freshauraa Phenyl" />
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Home Cleaning</div>
+          <div class="prod-name">Freshauraa Phenyl</div>
+          <div class="prod-footer">
+            <span class="prod-price">₹300</span>
+            <div class="qty-control">
+              <button class="qty-btn qty-minus" type="button">&minus;</button><span class="qty-value">0</span><button
+                class="qty-btn qty-plus" type="button">+</button>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <span class="cat-anchor" id="home-cleaning"></span>
-      <span class="cat-anchor" id="household-supplies"></span>
-      <span class="cat-anchor" id="personal-care"></span>
-      <span class="cat-anchor" id="bogo"></span>
-
-      <div class="prod-grid" id="prod-grid">
-        <div class="prod-card" data-category="Home Cleaning">
-          <div class="prod-img">
-            <span class="bogo-pill">BOGO</span
-            ><img src="assets/fresh.png" alt="Freshauraa Phenyl" />
-          </div>
-          <div class="prod-body">
-            <div class="prod-cat">Home Cleaning</div>
-            <div class="prod-name">Freshauraa Phenyl</div>
-            <div class="prod-footer">
-              <span class="prod-price">₹300</span>
-              <div class="qty-control">
-                <button class="qty-btn qty-minus" type="button">&minus;</button
-                ><span class="qty-value">0</span
-                ><button class="qty-btn qty-plus" type="button">+</button>
-              </div>
+      <div class="prod-card" data-category="Uncategorized">
+        <div class="prod-img">
+          <span class="bogo-pill">BOGO</span><img src="assets/fresh.png" alt="Food Wrapping Paper" />
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Uncategorized</div>
+          <div class="prod-name">Food Wrapping Paper</div>
+          <div class="prod-footer">
+            <span class="prod-price">₹325</span>
+            <div class="qty-control">
+              <button class="qty-btn qty-minus" type="button">&minus;</button><span class="qty-value">0</span><button
+                class="qty-btn qty-plus" type="button">+</button>
             </div>
           </div>
-        </div>
-
-        <div class="prod-card" data-category="Uncategorized">
-          <div class="prod-img">
-            <span class="bogo-pill">BOGO</span
-            ><img src="assets/fresh.png" alt="Food Wrapping Paper" />
-          </div>
-          <div class="prod-body">
-            <div class="prod-cat">Uncategorized</div>
-            <div class="prod-name">Food Wrapping Paper</div>
-            <div class="prod-footer">
-              <span class="prod-price">₹325</span>
-              <div class="qty-control">
-                <button class="qty-btn qty-minus" type="button">&minus;</button
-                ><span class="qty-value">0</span
-                ><button class="qty-btn qty-plus" type="button">+</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="prod-card" data-category="Household Supplies">
-          <div class="prod-img">
-            <span class="bogo-pill">BOGO</span
-            ><img src="assets/fresh.png" alt="Aluminium Foil Roll" />
-          </div>
-          <div class="prod-body">
-            <div class="prod-cat">Household Supplies</div>
-            <div class="prod-name">Aluminium Foil Roll</div>
-            <div class="prod-footer">
-              <span class="prod-price">₹920</span>
-              <div class="qty-control">
-                <button class="qty-btn qty-minus" type="button">&minus;</button
-                ><span class="qty-value">0</span
-                ><button class="qty-btn qty-plus" type="button">+</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="prod-card" data-category="Personal Care">
-          <div class="prod-img">
-            <span class="bogo-pill">BOGO</span
-            ><img src="assets/fresh.png" alt="Facial-Car Tissue Box 100" />
-          </div>
-          <div class="prod-body">
-            <div class="prod-cat">Personal Care</div>
-            <div class="prod-name">Facial-Car Tissue Box 100</div>
-            <div class="prod-footer">
-              <span class="prod-price">₹75</span>
-              <div class="qty-control">
-                <button class="qty-btn qty-minus" type="button">&minus;</button
-                ><span class="qty-value">0</span
-                ><button class="qty-btn qty-plus" type="button">+</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="prod-card" data-category="Household Supplies">
-          <div class="prod-img">
-            <span class="bogo-pill">BOGO</span
-            ><img src="assets/fresh.png" alt="Toilet Roll Pack of 10" />
-          </div>
-          <div class="prod-body">
-            <div class="prod-cat">Household Supplies</div>
-            <div class="prod-name">Toilet Roll Pack of 10</div>
-            <div class="prod-footer">
-              <span class="prod-price">₹390</span>
-              <div class="qty-control">
-                <button class="qty-btn qty-minus" type="button">&minus;</button
-                ><span class="qty-value">0</span
-                ><button class="qty-btn qty-plus" type="button">+</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="prod-card" data-category="Home Cleaning">
-          <div class="prod-img">
-            <span class="bogo-pill">BOGO</span
-            ><img src="assets/fresh.png" alt="Glass Cleaner 2X Shine 500ml" />
-          </div>
-          <div class="prod-body">
-            <div class="prod-cat">Home Cleaning</div>
-            <div class="prod-name">Glass Cleaner 2X Shine 500ml</div>
-            <div class="prod-footer">
-              <span class="prod-price">₹99</span>
-              <div class="qty-control">
-                <button class="qty-btn qty-minus" type="button">&minus;</button
-                ><span class="qty-value">0</span
-                ><button class="qty-btn qty-plus" type="button">+</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="prod-card" data-category="Home Cleaning">
-          <div class="prod-img">
-            <span class="bogo-pill">BOGO</span
-            ><img src="assets/fresh.png" alt="Dishwash Gel 100 Lemons Power" />
-          </div>
-          <div class="prod-body">
-            <div class="prod-cat">Home Cleaning</div>
-            <div class="prod-name">Dishwash Gel 100 Lemons Power</div>
-            <div class="prod-footer">
-              <span class="prod-price">₹160</span>
-              <div class="qty-control">
-                <button class="qty-btn qty-minus" type="button">&minus;</button
-                ><span class="qty-value">0</span
-                ><button class="qty-btn qty-plus" type="button">+</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="prod-card" data-category="Home Cleaning">
-          <div class="prod-img">
-            <span class="bogo-pill">BOGO</span
-            ><img src="assets/fresh.png" alt="Floor Cleaner 10X Clean Lemon" />
-          </div>
-          <div class="prod-body">
-            <div class="prod-cat">Home Cleaning</div>
-            <div class="prod-name">Floor Cleaner 10X Clean Lemon</div>
-            <div class="prod-footer">
-              <span class="prod-price">₹125</span>
-              <div class="qty-control">
-                <button class="qty-btn qty-minus" type="button">&minus;</button
-                ><span class="qty-value">0</span
-                ><button class="qty-btn qty-plus" type="button">+</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="prod-card" data-category="Home Cleaning">
-          <div class="prod-img">
-            <span class="bogo-pill">BOGO</span
-            ><img src="assets/fresh.png" alt="Toilet Cleaner" />
-          </div>
-          <div class="prod-body">
-            <div class="prod-cat">Home Cleaning</div>
-            <div class="prod-name">Toilet Cleaner</div>
-            <div class="prod-footer">
-              <span class="prod-price">₹145</span>
-              <div class="qty-control">
-                <button class="qty-btn qty-minus" type="button">&minus;</button
-                ><span class="qty-value">0</span
-                ><button class="qty-btn qty-plus" type="button">+</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="prod-card" data-category="Home Cleaning">
-          <div class="prod-img">
-            <span class="bogo-pill">BOGO</span
-            ><img src="assets/fresh.png" alt="Disinfectant" />
-          </div>
-          <div class="prod-body">
-            <div class="prod-cat">Home Cleaning</div>
-            <div class="prod-name">Disinfectant</div>
-            <div class="prod-footer">
-              <span class="prod-price">₹180</span>
-              <div class="qty-control">
-                <button class="qty-btn qty-minus" type="button">&minus;</button
-                ><span class="qty-value">0</span
-                ><button class="qty-btn qty-plus" type="button">+</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="no-products-msg" id="no-products-msg">
-          Is category mein abhi koi product nahi hai.
         </div>
       </div>
-    </main>
 
-    <footer>
-      <div class="footer-grid">
-        <div>
-          <div class="footer-logo">
-            <img
-              src="assets/logo5.png"
-              alt="Fresh Auraa logo"
-              class="footer-logo-img"
-            />
-          </div>
-          <div class="footer-contact">
-            <p>
-              <span class="contact-icon"
-                >📩</span
-              ><span>cs@freshauraa.in
-              </span>
+      <div class="prod-card" data-category="Household Supplies">
+        <div class="prod-img">
+          <span class="bogo-pill">BOGO</span><img src="assets/fresh.png" alt="Aluminium Foil Roll" />
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Household Supplies</div>
+          <div class="prod-name">Aluminium Foil Roll</div>
+          <div class="prod-footer">
+            <span class="prod-price">₹920</span>
+            <div class="qty-control">
+              <button class="qty-btn qty-minus" type="button">&minus;</button><span class="qty-value">0</span><button
+                class="qty-btn qty-plus" type="button">+</button>
+            </div>
           </div>
         </div>
-        <div class="footer-col">
-          <h4>Shop</h4>
-          <a href="products.html#home-cleaning">Home Cleaning</a>
-          <a href="products.html#household-supplies">Household Supplies</a>
-          <a href="products.html#personal-care">Personal Care</a>
-          <a href="products.html#bogo">BOGO Deals</a>
-        </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <a href="about.html">About Us</a>
-          <a href="contact.html">Contact</a>
-          <a href="blog.html">Blog</a>
-        </div>
-        <div class="footer-col">
-          <h4>Shop On</h4>
-          <a
-            href="https://www.amazon.in"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Amazon</a
-          >
-          <a
-            href="https://blinkit.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Blinkit</a
-          >
-          <a
-            href="https://www.indiamart.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            >IndiaMart</a
-          >
-          <a
-            href="https://buybuycart.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Buy Buy Cart</a
-          >
-        </div>
       </div>
-      <div class="footer-bottom">
-        <span class="footer-copy">© 2026 myseosmo. All rights reserved.</span>
-        <div class="social-row">
-          <a
-            class="social-btn"
-            href="https://www.facebook.com/freshauraa"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-            ><img src="assets/facebook.jpg" alt="Facebook"
-          /></a>
-          <a
-            class="social-btn"
-            href="https://www.x.com/freshauraa"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="X"
-            ><img src="assets/X.jpg" alt="X"
-          /></a>
-          <a
-            class="social-btn"
-            href="https://www.instagram.com/freshauraa.in/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            ><img src="assets/instagram.jpg" alt="Instagram"
-          /></a>
-        </div>
-      </div>
-    </footer>
 
-    <script>
-      //------
-      function resolveProductImage(image) {
-        if (!image) return "";
-        if (image.startsWith("http://") || image.startsWith("https://"))
-          return image;
-        if (image.startsWith("/")) return `http://localhost:3000${image}`;
+      <div class="prod-card" data-category="Personal Care">
+        <div class="prod-img">
+          <span class="bogo-pill">BOGO</span><img src="assets/fresh.png" alt="Facial-Car Tissue Box 100" />
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Personal Care</div>
+          <div class="prod-name">Facial-Car Tissue Box 100</div>
+          <div class="prod-footer">
+            <span class="prod-price">₹75</span>
+            <div class="qty-control">
+              <button class="qty-btn qty-minus" type="button">&minus;</button><span class="qty-value">0</span><button
+                class="qty-btn qty-plus" type="button">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-category="Household Supplies">
+        <div class="prod-img">
+          <span class="bogo-pill">BOGO</span><img src="assets/fresh.png" alt="Toilet Roll Pack of 10" />
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Household Supplies</div>
+          <div class="prod-name">Toilet Roll Pack of 10</div>
+          <div class="prod-footer">
+            <span class="prod-price">₹390</span>
+            <div class="qty-control">
+              <button class="qty-btn qty-minus" type="button">&minus;</button><span class="qty-value">0</span><button
+                class="qty-btn qty-plus" type="button">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-category="Home Cleaning">
+        <div class="prod-img">
+          <span class="bogo-pill">BOGO</span><img src="assets/fresh.png" alt="Glass Cleaner 2X Shine 500ml" />
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Home Cleaning</div>
+          <div class="prod-name">Glass Cleaner 2X Shine 500ml</div>
+          <div class="prod-footer">
+            <span class="prod-price">₹99</span>
+            <div class="qty-control">
+              <button class="qty-btn qty-minus" type="button">&minus;</button><span class="qty-value">0</span><button
+                class="qty-btn qty-plus" type="button">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-category="Home Cleaning">
+        <div class="prod-img">
+          <span class="bogo-pill">BOGO</span><img src="assets/fresh.png" alt="Dishwash Gel 100 Lemons Power" />
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Home Cleaning</div>
+          <div class="prod-name">Dishwash Gel 100 Lemons Power</div>
+          <div class="prod-footer">
+            <span class="prod-price">₹160</span>
+            <div class="qty-control">
+              <button class="qty-btn qty-minus" type="button">&minus;</button><span class="qty-value">0</span><button
+                class="qty-btn qty-plus" type="button">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-category="Home Cleaning">
+        <div class="prod-img">
+          <span class="bogo-pill">BOGO</span><img src="assets/fresh.png" alt="Floor Cleaner 10X Clean Lemon" />
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Home Cleaning</div>
+          <div class="prod-name">Floor Cleaner 10X Clean Lemon</div>
+          <div class="prod-footer">
+            <span class="prod-price">₹125</span>
+            <div class="qty-control">
+              <button class="qty-btn qty-minus" type="button">&minus;</button><span class="qty-value">0</span><button
+                class="qty-btn qty-plus" type="button">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-category="Home Cleaning">
+        <div class="prod-img">
+          <span class="bogo-pill">BOGO</span><img src="assets/fresh.png" alt="Toilet Cleaner" />
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Home Cleaning</div>
+          <div class="prod-name">Toilet Cleaner</div>
+          <div class="prod-footer">
+            <span class="prod-price">₹145</span>
+            <div class="qty-control">
+              <button class="qty-btn qty-minus" type="button">&minus;</button><span class="qty-value">0</span><button
+                class="qty-btn qty-plus" type="button">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-category="Home Cleaning">
+        <div class="prod-img">
+          <span class="bogo-pill">BOGO</span><img src="assets/fresh.png" alt="Disinfectant" />
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Home Cleaning</div>
+          <div class="prod-name">Disinfectant</div>
+          <div class="prod-footer">
+            <span class="prod-price">₹180</span>
+            <div class="qty-control">
+              <button class="qty-btn qty-minus" type="button">&minus;</button><span class="qty-value">0</span><button
+                class="qty-btn qty-plus" type="button">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="no-products-msg" id="no-products-msg">
+        Is category mein abhi koi product nahi hai.
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <img src="assets/logo5.png" alt="Fresh Auraa logo" class="footer-logo-img" />
+        </div>
+        <div class="footer-contact">
+          <p>
+            <span class="contact-icon">📩</span><span>cs@freshauraa.in
+            </span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="products.html#home-cleaning">Home Cleaning</a>
+        <a href="products.html#household-supplies">Household Supplies</a>
+        <a href="products.html#personal-care">Personal Care</a>
+        <a href="products.html#bogo">BOGO Deals</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="blog.html">Blog</a>
+      </div>
+      <div class="footer-col">
+        <h4>Shop On</h4>
+        <a href="https://www.amazon.in" target="_blank" rel="noopener noreferrer">Amazon</a>
+        <a href="https://blinkit.com" target="_blank" rel="noopener noreferrer">Blinkit</a>
+        <a href="https://www.indiamart.com" target="_blank" rel="noopener noreferrer">IndiaMart</a>
+        <a href="https://buybuycart.com" target="_blank" rel="noopener noreferrer">Buy Buy Cart</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 myseosmo. All rights reserved.</span>
+      <div class="social-row">
+        <a class="social-btn" href="https://www.facebook.com/freshauraa" target="_blank" rel="noopener noreferrer"
+          aria-label="Facebook"><img src="assets/facebook.jpg" alt="Facebook" /></a>
+        <a class="social-btn" href="https://www.x.com/freshauraa" target="_blank" rel="noopener noreferrer"
+          aria-label="X"><img src="assets/X.jpg" alt="X" /></a>
+        <a class="social-btn" href="https://www.instagram.com/freshauraa.in/" target="_blank" rel="noopener noreferrer"
+          aria-label="Instagram"><img src="assets/instagram.jpg" alt="Instagram" /></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    //------
+    function resolveProductImage(image) {
+      if (!image) return "";
+      if (image.startsWith("http://") || image.startsWith("https://"))
         return image;
-      }
+      if (image.startsWith("/")) return `http://localhost:3000${image},https://freshauraa.onrender.com${image}`;
+      return image;
+    }
 
-      async function loadProducts() {
-        try {
-          const response = await fetch("http://localhost:3000/api/products");
-          const products = await response.json();
-          const grid = document.getElementById("prod-grid");
-          grid.innerHTML = "";
+    async function loadProducts() {
+      try {
+        const response = await fetch("http://localhost:3000/api/products", "https://freshauraa.onrender.com/api/products");
+        const products = await response.json();
+        const grid = document.getElementById("prod-grid");
+        grid.innerHTML = "";
 
-          if (!Array.isArray(products) || !products.length) {
-            grid.innerHTML = `<div class="no-products-msg">No products available.</div>`;
-            return;
-          }
+        if (!Array.isArray(products) || !products.length) {
+          grid.innerHTML = `<div class="no-products-msg">No products available.</div>`;
+          return;
+        }
 
-          products.forEach((product) => {
-            grid.innerHTML += `
+        products.forEach((product) => {
+          grid.innerHTML += `
               <div class="prod-card" data-category="${product.category}">
                 <div class="prod-img">
                   ${product.bogo ? '<span class="bogo-pill">BOGO</span>' : ""}
-                  ${
-                    product.image
-                      ? `
+                  ${product.image
+              ? `
                     <img
                       src="${resolveProductImage(product.image)}"
                       alt="${product.name}"
                     />
                   `
-                      : ""
-                  }
+              : ""
+            }
                 </div>
                 <div class="prod-body">
                   <div class="prod-cat">${product.category || "Uncategorized"}</div>
@@ -1168,208 +1213,204 @@
                   </div>
                 </div>
             `;
-          });
-          restoreQtyFromCart();
-        } catch (error) {
-          console.error(error);
-        }
-      }
-      const nav = document.getElementById("site-nav");
-      window.addEventListener("scroll", () => {
-        nav.classList.toggle("scrolled", window.scrollY > 80);
-      });
-
-      const tabs = document.querySelectorAll(".cat-tab");
-      const noMsg = document.getElementById("no-products-msg");
-
-      function getCards() {
-        return document.querySelectorAll(".prod-card");
-      }
-
-      function applyFilter(filter) {
-        tabs.forEach((t) => t.classList.remove("active"));
-        const matchTab = [...tabs].find((t) => t.dataset.filter === filter);
-        if (matchTab) matchTab.classList.add("active");
-
-        const cards = getCards();
-        let visible = 0;
-        cards.forEach((card) => {
-          const match =
-            filter === "All Products" || card.dataset.category === filter;
-          card.classList.toggle("hidden", !match);
-          if (match) visible++;
         });
-        noMsg.style.display = visible === 0 ? "block" : "none";
+        restoreQtyFromCart();
+      } catch (error) {
+        console.error(error);
       }
+    }
+    const nav = document.getElementById("site-nav");
+    window.addEventListener("scroll", () => {
+      nav.classList.toggle("scrolled", window.scrollY > 80);
+    });
 
-      tabs.forEach((tab) => {
-        tab.addEventListener("click", () => applyFilter(tab.dataset.filter));
+    const tabs = document.querySelectorAll(".cat-tab");
+    const noMsg = document.getElementById("no-products-msg");
+
+    function getCards() {
+      return document.querySelectorAll(".prod-card");
+    }
+
+    function applyFilter(filter) {
+      tabs.forEach((t) => t.classList.remove("active"));
+      const matchTab = [...tabs].find((t) => t.dataset.filter === filter);
+      if (matchTab) matchTab.classList.add("active");
+
+      const cards = getCards();
+      let visible = 0;
+      cards.forEach((card) => {
+        const match =
+          filter === "All Products" || card.dataset.category === filter;
+        card.classList.toggle("hidden", !match);
+        if (match) visible++;
       });
+      noMsg.style.display = visible === 0 ? "block" : "none";
+    }
 
-      window.addEventListener("hashchange", () => {
-        const hash = window.location.hash;
-        const anchorToFilter = {
-          "#home-cleaning": "Home Cleaning",
-          "#household-supplies": "Household Supplies",
-          "#personal-care": "Personal Care",
-          "#bogo": "All Products",
-        };
-        const filter = anchorToFilter[hash];
-        if (filter) applyFilter(filter);
-      });
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => applyFilter(tab.dataset.filter));
+    });
 
-      window.addEventListener("DOMContentLoaded", async () => {
-        await loadProducts();
-        const hash = window.location.hash;
-        if (!hash) return;
-        const anchorToFilter = {
-          "#home-cleaning": "Home Cleaning",
-          "#household-supplies": "Household Supplies",
-          "#personal-care": "Personal Care",
-          "#bogo": "All Products",
-        };
-        const filter = anchorToFilter[hash];
-        if (filter) applyFilter(filter);
-      });
+    window.addEventListener("hashchange", () => {
+      const hash = window.location.hash;
+      const anchorToFilter = {
+        "#home-cleaning": "Home Cleaning",
+        "#household-supplies": "Household Supplies",
+        "#personal-care": "Personal Care",
+        "#bogo": "All Products",
+      };
+      const filter = anchorToFilter[hash];
+      if (filter) applyFilter(filter);
+    });
 
-      // ══════════════════════════════════════════════
-      //  CART SYSTEM — syncs with freshAuraCart (localStorage)
-      // ══════════════════════════════════════════════
+    window.addEventListener("DOMContentLoaded", async () => {
+      await loadProducts();
+      const hash = window.location.hash;
+      if (!hash) return;
+      const anchorToFilter = {
+        "#home-cleaning": "Home Cleaning",
+        "#household-supplies": "Household Supplies",
+        "#personal-care": "Personal Care",
+        "#bogo": "All Products",
+      };
+      const filter = anchorToFilter[hash];
+      if (filter) applyFilter(filter);
+    });
 
-      function getCart() {
-        return JSON.parse(localStorage.getItem("freshAuraCart") || "[]");
+    // ══════════════════════════════════════════════
+    //  CART SYSTEM — syncs with freshAuraCart (localStorage)
+    // ══════════════════════════════════════════════
+
+    function getCart() {
+      return JSON.parse(localStorage.getItem("freshAuraCart") || "[]");
+    }
+    function saveCart(cart) {
+      localStorage.setItem("freshAuraCart", JSON.stringify(cart));
+      updateBadge(cart);
+    }
+    function updateBadge(cart) {
+      const n = cart.reduce((s, i) => s + i.qty, 0);
+      const b = document.getElementById("cartBadge");
+      if (!b) return;
+      b.textContent = n > 99 ? "99+" : n;
+      b.classList.toggle("has-items", n > 0);
+    }
+
+    function slugId(name) {
+      return name
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)/g, "");
+    }
+
+    function showToast(msg) {
+      let t = document.getElementById("_cartToast");
+      if (!t) {
+        t = document.createElement("div");
+        t.id = "_cartToast";
+        t.style.cssText =
+          "position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:#1e211a;color:#e5d9c5;padding:13px 26px;border-radius:10px;font-family:Montserrat,sans-serif;font-size:0.74rem;letter-spacing:1.5px;border:1px solid rgba(184,137,47,0.4);box-shadow:0 14px 40px rgba(0,0,0,0.35);z-index:9999;opacity:0;transition:all 0.35s ease;white-space:nowrap;pointer-events:none;";
+        document.body.appendChild(t);
       }
-      function saveCart(cart) {
-        localStorage.setItem("freshAuraCart", JSON.stringify(cart));
-        updateBadge(cart);
-      }
-      function updateBadge(cart) {
-        const n = cart.reduce((s, i) => s + i.qty, 0);
-        const b = document.getElementById("cartBadge");
-        if (!b) return;
-        b.textContent = n > 99 ? "99+" : n;
-        b.classList.toggle("has-items", n > 0);
-      }
+      t.textContent = msg;
+      t.style.opacity = "1";
+      t.style.transform = "translateX(-50%) translateY(0)";
+      clearTimeout(t._to);
+      t._to = setTimeout(() => {
+        t.style.opacity = "0";
+        t.style.transform = "translateX(-50%) translateY(20px)";
+      }, 2200);
+    }
 
-      function slugId(name) {
-        return name
-          .toLowerCase()
-          .replace(/[^a-z0-9]+/g, "-")
-          .replace(/(^-|-$)/g, "");
-      }
+    // Event delegation — handles both static & API-loaded cards
+    document
+      .getElementById("prod-grid")
+      .addEventListener("click", function (e) {
+        const btn = e.target.closest(".qty-btn");
+        if (!btn) return;
 
-      function showToast(msg) {
-        let t = document.getElementById("_cartToast");
-        if (!t) {
-          t = document.createElement("div");
-          t.id = "_cartToast";
-          t.style.cssText =
-            "position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:#1e211a;color:#e5d9c5;padding:13px 26px;border-radius:10px;font-family:Montserrat,sans-serif;font-size:0.74rem;letter-spacing:1.5px;border:1px solid rgba(184,137,47,0.4);box-shadow:0 14px 40px rgba(0,0,0,0.35);z-index:9999;opacity:0;transition:all 0.35s ease;white-space:nowrap;pointer-events:none;";
-          document.body.appendChild(t);
+        const card = btn.closest(".prod-card");
+        if (!card) return;
+
+        const qtySpan = card.querySelector(".qty-value");
+        const nameEl = card.querySelector(".prod-name");
+        const priceEl = card.querySelector(".prod-price");
+        const catEl = card.querySelector(".prod-cat");
+        const imgEl = card.querySelector(".prod-img img");
+
+        if (!qtySpan || !nameEl || !priceEl) return;
+
+        let qty = parseInt(qtySpan.textContent) || 0;
+        const name = nameEl.textContent.trim();
+        const priceRaw = priceEl.textContent.replace(/[₹,]/g, "").trim();
+        const price = parseInt(priceRaw) || 0;
+        const category = catEl ? catEl.textContent.trim() : "Home Care";
+        const image = imgEl ? imgEl.src : "";
+        const id = slugId(name);
+
+        const isPlus = btn.classList.contains("qty-plus");
+        const isMinus = btn.classList.contains("qty-minus");
+
+        if (isPlus) {
+          qty++;
+          qtySpan.textContent = qty;
+          // add/update in cart
+          const cart = getCart();
+          const existing = cart.find((i) => i.id === id);
+          if (existing) {
+            existing.qty = qty;
+          } else {
+            cart.push({ id, name, price, category, image, qty });
+          }
+          saveCart(cart);
+          showToast(
+            qty === 1
+              ? `✓  ${name} added to cart`
+              : `✓  Qty updated to ${qty}`,
+          );
         }
-        t.textContent = msg;
-        t.style.opacity = "1";
-        t.style.transform = "translateX(-50%) translateY(0)";
-        clearTimeout(t._to);
-        t._to = setTimeout(() => {
-          t.style.opacity = "0";
-          t.style.transform = "translateX(-50%) translateY(20px)";
-        }, 2200);
-      }
 
-      // Event delegation — handles both static & API-loaded cards
-      document
-        .getElementById("prod-grid")
-        .addEventListener("click", function (e) {
-          const btn = e.target.closest(".qty-btn");
-          if (!btn) return;
-
-          const card = btn.closest(".prod-card");
-          if (!card) return;
-
-          const qtySpan = card.querySelector(".qty-value");
-          const nameEl = card.querySelector(".prod-name");
-          const priceEl = card.querySelector(".prod-price");
-          const catEl = card.querySelector(".prod-cat");
-          const imgEl = card.querySelector(".prod-img img");
-
-          if (!qtySpan || !nameEl || !priceEl) return;
-
-          let qty = parseInt(qtySpan.textContent) || 0;
-          const name = nameEl.textContent.trim();
-          const priceRaw = priceEl.textContent.replace(/[₹,]/g, "").trim();
-          const price = parseInt(priceRaw) || 0;
-          const category = catEl ? catEl.textContent.trim() : "Home Care";
-          const image = imgEl ? imgEl.src : "";
-          const id = slugId(name);
-
-          const isPlus = btn.classList.contains("qty-plus");
-          const isMinus = btn.classList.contains("qty-minus");
-
-          if (isPlus) {
-            qty++;
-            qtySpan.textContent = qty;
-            // add/update in cart
-            const cart = getCart();
+        if (isMinus && qty > 0) {
+          qty--;
+          qtySpan.textContent = qty;
+          const cart = getCart();
+          if (qty === 0) {
+            const newCart = cart.filter((i) => i.id !== id);
+            saveCart(newCart);
+            showToast(`Removed from cart`);
+          } else {
             const existing = cart.find((i) => i.id === id);
-            if (existing) {
-              existing.qty = qty;
-            } else {
-              cart.push({ id, name, price, category, image, qty });
-            }
+            if (existing) existing.qty = qty;
             saveCart(cart);
-            showToast(
-              qty === 1
-                ? `✓  ${name} added to cart`
-                : `✓  Qty updated to ${qty}`,
-            );
           }
-
-          if (isMinus && qty > 0) {
-            qty--;
-            qtySpan.textContent = qty;
-            const cart = getCart();
-            if (qty === 0) {
-              const newCart = cart.filter((i) => i.id !== id);
-              saveCart(newCart);
-              showToast(`Removed from cart`);
-            } else {
-              const existing = cart.find((i) => i.id === id);
-              if (existing) existing.qty = qty;
-              saveCart(cart);
-            }
-          }
-        });
-
-      // On page load — restore qty display from cart
-      function restoreQtyFromCart() {
-        const cart = getCart();
-        updateBadge(cart);
-        document.querySelectorAll(".prod-card").forEach((card) => {
-          const nameEl = card.querySelector(".prod-name");
-          const qtySpan = card.querySelector(".qty-value");
-          if (!nameEl || !qtySpan) return;
-          const id = slugId(nameEl.textContent.trim());
-          const item = cart.find((i) => i.id === id);
-          if (item) qtySpan.textContent = item.qty;
-        });
-      }
-
-      // Run after DOM + API products loaded
-      const _origDOMReady = window.onDOMContentLoaded;
-      document.addEventListener("DOMContentLoaded", () => {
-        setTimeout(restoreQtyFromCart, 600); // slight delay for API cards
+        }
       });
-      restoreQtyFromCart(); // for static HTML cards
-    </script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      crossorigin="anonymous"
-    ></script>
-    <!-- WhatsApp Floating Icon -->
-    <a
-      href="https://wa.me/"
-  <a href="https://wa.me/" target="_blank" style="
+
+    // On page load — restore qty display from cart
+    function restoreQtyFromCart() {
+      const cart = getCart();
+      updateBadge(cart);
+      document.querySelectorAll(".prod-card").forEach((card) => {
+        const nameEl = card.querySelector(".prod-name");
+        const qtySpan = card.querySelector(".qty-value");
+        if (!nameEl || !qtySpan) return;
+        const id = slugId(nameEl.textContent.trim());
+        const item = cart.find((i) => i.id === id);
+        if (item) qtySpan.textContent = item.qty;
+      });
+    }
+
+    // Run after DOM + API products loaded
+    const _origDOMReady = window.onDOMContentLoaded;
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(restoreQtyFromCart, 600); // slight delay for API cards
+    });
+    restoreQtyFromCart(); // for static HTML cards
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"></script>
+  <!-- WhatsApp Floating Icon -->
+  <a href="https://wa.me/" <a href="https://wa.me/" target="_blank" style="
         position: fixed;
         bottom: 30px;
         right: 30px;
@@ -1386,9 +1427,12 @@
         color: white;
         border-radius: 50%;
       " onmouseover="this.style.transform = 'scale(1.1)'" onmouseout="this.style.transform = 'scale(1)'">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="width: 28px; height: 28px;">
-      <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor"
+      style="width: 28px; height: 28px;">
+      <path
+        d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
     </svg>
   </a>
-  </body>
+</body>
+
 </html>
