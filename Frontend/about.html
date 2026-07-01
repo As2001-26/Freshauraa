@@ -202,12 +202,12 @@
         text-transform: uppercase;
       }
       .about-content {
-        max-width: 900px;
+        max-width: 1200px;
         margin: 0 auto 48px;
       }
       .about-para {
         font-size: 0.95rem;
-        color: var(--text-soft);
+        color: #000;
         line-height: 1.9;
         margin-bottom: 24px;
         text-align: justify;
@@ -853,10 +853,14 @@
         }
       })();
 
+      const API_BASE = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" || window.location.protocol === "file:")
+        ? "http://localhost:3000"
+        : "https://freshauraa.onrender.com";
+
       // ── Fetch About Content ──
       (async function fetchAbout() {
         try {
-          const res = await fetch("http://localhost:3000/api/about");
+          const res = await fetch(`${API_BASE}/api/about`);
           if (!res.ok) throw new Error("Failed to fetch");
           const data = await res.json();
 

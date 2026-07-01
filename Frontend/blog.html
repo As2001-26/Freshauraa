@@ -1039,8 +1039,10 @@
       const modalTitle = document.getElementById("modalTitle");
       const modalBody = document.getElementById("modalBody");
 
-      const BACKEND = "http://localhost:3000";
-      const API = "http://localhost:3000/api";
+      const BACKEND = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" || window.location.protocol === "file:")
+        ? "http://localhost:3000"
+        : "https://freshauraa.onrender.com";
+      const API = `${BACKEND}/api`;
 
       async function fetchAndRenderBlogs() {
         try {
