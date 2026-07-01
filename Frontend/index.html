@@ -4452,10 +4452,8 @@
       crossorigin="anonymous"
     ></script>
     <!-- WhatsApp Floating Icon -->
-    <a
-      href="https://wa.me/"
-      target="_blank"
-      style="
+    <style>
+      .whatsapp-float-btn {
         position: fixed;
         bottom: 30px;
         right: 30px;
@@ -4471,9 +4469,22 @@
         background-color: #25d366;
         color: white;
         border-radius: 50%;
-      "
-      onmouseover="this.style.transform = 'scale(1.1)'"
-      onmouseout="this.style.transform = 'scale(1)'"
+      }
+      .whatsapp-float-btn:hover {
+        transform: scale(1.1);
+      }
+      @media (max-width: 768px) {
+        .whatsapp-float-btn {
+          bottom: 150px;
+          right: 20px;
+          left: auto;
+        }
+      }
+    </style>
+    <a
+      href="https://wa.me/"
+      target="_blank"
+      class="whatsapp-float-btn"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
